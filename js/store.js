@@ -7,7 +7,7 @@
     return {
       v: 1,
       onboarded: false,
-      profile: { xp: 0, streak: 0, bestStreak: 0, lastDay: '', goal: 30, rate: 0.95 },
+      profile: { xp: 0, streak: 0, bestStreak: 0, lastDay: '', goal: 30, rate: 0.95, sfx: true, npc: '' },
       days: {},
       langs: {},
       custom: {}
@@ -52,6 +52,7 @@
     if (!l.exams) l.exams = {};
     if (!l.dialogues) l.dialogues = {};
     if (!l.sounds) l.sounds = {};
+    if (!l.chests) l.chests = {};
     if (!l.speak) l.speak = { tries: 0, ok: 0, best: 0, last: 0 };
     return l;
   }
@@ -438,6 +439,34 @@
 
   function setGoal(n) { S().profile.goal = n; save(); }
   function setRate(r) { S().profile.rate = r; save(); }
+  function setSfx(on) { S().profile.sfx = !!on; save(); }
+
+  /* 宝箱：单元全通关后可领一次 */
+  function chestOpened(langId, unitId) {
+    return !!(getLang(langId).chests[unitId]);
+  }
+
+  function openChest(langId, unitId) {
+    var l = getLang(langId);
+    if (l.chests[unitId]) return null;
+    var bonus = 20 + Math.floor(Math.random() * 3) * 5;
+    l.chests[unitId] = { at: Date.now(), xp: bonus };
+    S().profile.xp = (S().profile.xp || 0) + bonus;
+    dayRec().xp += bonus;
+    save();
+    return { xp: bonus };
+  }
+
+  /* 最近 7 天累计 XP，用于联赛 */
+  function weekXp() {
+    var total = 0;
+    for (var i = 0; i < 7; i++) {
+      var k = LP.util.dayStr(-i);
+      var d = S().days[k];
+      if (d) total += d.xp || 0;
+    }
+    return total;
+  }
 
   LP.store = {
     load: load,
@@ -476,6 +505,10 @@
     importText: importText,
     resetLang: resetLang,
     setGoal: setGoal,
-    setRate: setRate
+    setRate: setRate,
+    setSfx: setSfx,
+    chestOpened: chestOpened,
+    openChest: openChest,
+    weekXp: weekXp
   };
 })();

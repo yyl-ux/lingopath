@@ -14,6 +14,23 @@
 
   /* ---------------- 语言选择 ---------------- */
 
+  function showChest(xp, done) {
+    var el = document.createElement('div');
+    el.className = 'chest-modal';
+    el.innerHTML = '<div class="chest-box">' +
+      '<div class="chest-emoji">🎁</div>' +
+      '<div class="chest-title">宝箱打开！</div>' +
+      '<div class="chest-xp">+' + xp + ' XP</div>' +
+      '<button class="btn primary" id="chestOk">收下</button></div>';
+    document.body.appendChild(el);
+    el.addEventListener('click', function (e) {
+      if (e.target === el || (e.target && e.target.id === 'chestOk')) {
+        if (el.parentNode) el.parentNode.removeChild(el);
+        if (done) done();
+      }
+    });
+  }
+
   function courses(root) {
     var st = LP.store.getState();
     var goal = st.profile.goal || 30;
@@ -39,6 +56,17 @@
         '</button>';
     }).join('');
 
+    var board = LP.game.league();
+    var myRank = 1;
+    board.forEach(function (r, i) { if (r.me) myRank = i + 1; });
+    var boardHtml = board.map(function (r, i) {
+      return '<div class="lg-row' + (r.me ? ' me' : '') + '">' +
+        '<span class="lg-rank">' + (i + 1) + '</span>' +
+        '<span class="lg-ava">' + r.emoji + '</span>' +
+        '<span class="lg-name">' + LP.util.esc(r.name) + '</span>' +
+        '<span class="lg-xp">' + r.xp + '</span></div>';
+    }).join('');
+
     root.innerHTML =
       topbar('<span class="tb-sp"></span>',
         '<div class="brand-name">语径</div><div class="brand-sub">LingoPath</div>',
@@ -54,6 +82,8 @@
           ? '今天达标了，多学也不算白学。'
           : '再赚 ' + (goal - txp) + ' XP 就达标，一关大约 10 XP。') + '</div>' +
       '</section>' +
+      '<div class="sec-title">本周联赛 <span>第 ' + myRank + ' 名 · 共 ' + board.length + ' 人 · 7 天累计 XP</span></div>' +
+      '<div class="league">' + boardHtml + '</div>' +
       '<div class="sec-title">选一门语言 <span>' + langs.length + ' 门 · 进度各自独立</span></div>' +
       '<div class="lang-grid">' + cards + '</div>' +
       '<div class="note">学习记录只保存在这台设备。换设备时用「我的 → 导出存档」把进度带走。</div>';
@@ -136,6 +166,26 @@
         '<b>' + lv + '</b><span>' + (passed ? '已认证' : open ? '学习中' : '未解锁') + '</span></div>';
     }).join('');
 
+    var dlgs = course.dialogues || [];
+    var dlgByLv = {};
+    dlgs.forEach(function (d) {
+      var k = d.level || 'A1';
+      (dlgByLv[k] = dlgByLv[k] || []).push(d);
+    });
+    function dlgCards(list) {
+      return '<div class="dlg-grid">' + list.map(function (d) {
+        var rec = LP.store.getDialogue(langId, d.id);
+        var open = LP.store.levelOpen(langId, d.level || 'A1');
+        var sayTurns = d.lines.filter(function (l) { return l.say; }).length;
+        return '<button class="dlg-card' + (rec ? ' done' : '') + '" data-dlg="' + d.id + '" data-open="' + (open ? 1 : 0) + '">' +
+          '<div class="dlg-lv">' + (d.level || 'A1') + '</div>' +
+          '<div class="dlg-name">' + LP.util.esc(d.title) + '</div>' +
+          '<div class="dlg-sub">' + LP.util.esc(d.scene || '') + ' · ' + d.lines.length + ' 轮 · 开口 ' + sayTurns + ' 次</div>' +
+          '<div class="dlg-st">' + (rec ? '已通关 ' + rec.acc + ' 分' : open ? '未开始' : '未解锁') + '</div>' +
+          '</button>';
+      }).join('') + '</div>';
+    }
+
     var unitBlocks = lvList.map(function (lv) {
       var open = LP.store.levelOpen(langId, lv);
       var info = LP.levelInfo(lv);
@@ -173,9 +223,20 @@
         var wordsBox = learned.length
           ? '<div class="unit-words">' + chips + '</div>'
           : '<div class="unit-words empty">还没开始学，这一单元共 ' + wTotal + ' 个词</div>';
-        return '<section class="unit" style="--ucc:' + (u.color || '#58cc02') + '">' +
-          '<div class="unit-head"><div class="unit-title">' + LP.util.esc(u.title) + '</div>' +
-          '<div class="unit-desc">' + LP.util.esc(u.desc || '') + '</div>' +
+        var chestRec = LP.store.getLang(langId).chests[u.id];
+        var chestHtml = (!u.custom && uTotal > 0 && uDone === uTotal)
+          ? '<div class="chest-wrap">' + (chestRec
+              ? '<div class="chest opened"><span>🎁</span> 已领取 +' + (chestRec.xp || 0) + ' XP</div>'
+              : '<button class="chest" data-chest="' + u.id + '"><span>🎁</span> 开启本单元宝箱</button>')
+            + '</div>'
+          : '';
+        var uPct = LP.util.pct(uDone, uTotal);
+        return '<section class="unit' + (uDone === uTotal && uTotal ? ' cleared' : '') +
+          '" style="--ucc:' + (u.color || '#58cc02') + ';--up:' + uPct + '">' +
+          '<div class="unit-head"><div class="unit-head-l">' +
+            '<div class="unit-title">' + LP.util.esc(u.title) + '</div>' +
+            '<div class="unit-desc">' + LP.util.esc(u.desc || '') + '</div>' +
+          '</div><div class="unit-ring"><i>' + uPct + '%</i></div></div>' +
           '<div class="unit-bars">' +
             '<div class="unit-bar"><span class="ub-label">学习进度</span>' +
             bar(LP.util.pct(uDone, uTotal), 'sm') +
@@ -189,39 +250,57 @@
             (uDone === uTotal ? '✓ 本单元已通关' : uDone === 0 ? '尚未开始' : '已完成 ' + uDone + ' 关') +
           '</div></div>' +
           '<div class="path">' + rows + '</div>' +
+          chestHtml +
           (u.custom ? '<div class="unit-del"><button class="ghost sm" data-delunit="' + u.id + '">删除这个词表</button></div>' : '') +
           '</section>';
       }).join('');
 
+      var lvDlgs = dlgByLv[lv] || [];
+      var lvDlgBlock = lvDlgs.length
+        ? '<div class="sec-title sub">情景对话 <span>' + lvDlgs.length +
+          ' 个场景 · 学完上面这些单元再来实战</span></div>' + dlgCards(lvDlgs)
+        : '';
       return '<div class="lvl-block' + (open ? '' : ' shut') + '">' +
         '<div class="lvl-head"><span class="lv-tag big">' + lv + '</span>' +
           '<div class="lvl-txt"><b>' + (info ? info.name : lv) + '</b>' +
           '<span>' + (info ? info.desc : '') + '</span></div></div>' +
         soundSection(langId, lv, open, course) +
-        units + examCard(langId, lv, open, course) +
+        units + lvDlgBlock + examCard(langId, lv, open, course) +
         '</div>';
     }).join('');
-
-    var dlgs = course.dialogues || [];
-    var dlgSection = dlgs.length
-      ? '<div class="sec-title">情景对话 <span>' + dlgs.length + ' 个真实场景 · 必须真的开口</span></div>' +
-        '<div class="dlg-grid">' + dlgs.map(function (d) {
-          var rec = LP.store.getDialogue(langId, d.id);
-          var open = LP.store.levelOpen(langId, d.level || 'A1');
-          var sayTurns = d.lines.filter(function (l) { return l.say; }).length;
-          return '<button class="dlg-card' + (rec ? ' done' : '') + '" data-dlg="' + d.id + '" data-open="' + (open ? 1 : 0) + '">' +
-            '<div class="dlg-lv">' + (d.level || 'A1') + '</div>' +
-            '<div class="dlg-name">' + LP.util.esc(d.title) + '</div>' +
-            '<div class="dlg-sub">' + LP.util.esc(d.scene || '') + ' · ' + d.lines.length + ' 轮 · 开口 ' + sayTurns + ' 次</div>' +
-            '<div class="dlg-st">' + (rec ? '已通关 ' + rec.acc + ' 分' : open ? '未开始' : '未解锁') + '</div>' +
-            '</button>';
-        }).join('') + '</div>'
-      : '';
 
     var speakCard = '<button class="review-card speak-card" data-speak>' +
       '<div class="rc-left"><div class="rc-title">🎤 口语跟读练习</div>' +
       '<div class="rc-sub">用你学过的句子开口：听标准音 → 录音 → 回放自评</div></div>' +
       '<div class="rc-badge speak">8 句</div></button>';
+
+    /* 继续学习：找到第一关没过的单元与关卡 */
+    var langState = LP.store.getLang(langId);
+    var nextLesson = null, nextUnit = null;
+    course.units.forEach(function (u) {
+      if (nextLesson) return;
+      (u.lessons || []).forEach(function (l) {
+        if (nextLesson) return;
+        var r = langState.lessons[l.id];
+        if (!(r && r.done)) { nextLesson = l; nextUnit = u; }
+      });
+    });
+    var npc = LP.game.npc(langId);
+    var hero = nextLesson
+      ? '<div class="hero" style="--hcc:' + (nextUnit.color || '#58cc02') + '">' +
+          '<div class="hero-top"><span class="hero-k">继续学习</span>' +
+          '<span class="hero-lv">' + (nextUnit.level || 'A1') + '</span></div>' +
+          '<div class="hero-t">' + LP.util.esc(nextLesson.title) + '</div>' +
+          '<div class="hero-s">' + LP.util.esc(nextUnit.title) + ' · ' +
+            (nextLesson.items || []).length + ' 个词</div>' +
+          '<div class="hero-npc"><span class="hero-ava">' + npc.emoji + '</span>' +
+            '<span class="hero-say">' + LP.util.esc(npc.hello) + '</span></div>' +
+          '<button class="hero-btn" data-hero="' + nextLesson.id + '">开始这一关</button>' +
+        '</div>'
+      : '<div class="hero cleared" style="--hcc:#58cc02">' +
+          '<div class="hero-top"><span class="hero-k">全部完成</span></div>' +
+          '<div class="hero-t">🎉 这一门课你已经走完了</div>' +
+          '<div class="hero-s">去练口语和情景，或者换一门语言</div></div>';
 
     root.innerHTML =
       topbar('<button class="icon-btn" data-back>←</button>',
@@ -231,6 +310,9 @@
         '<div class="topstats"><span class="pill fire">🔥<b>' + LP.store.streakNow() + '</b></span>' +
         '<span class="pill gem">⚡<b>' + (LP.store.getState().profile.xp || 0) + '</b></span></div>') +
       '<div class="lv-ribbon">' + ribbon + '</div>' +
+      hero +
+      '<div class="path-wrap">' + unitBlocks + '</div>' +
+      '<div class="sec-title top-gap">巩固练习 <span>把学过的词练牢</span></div>' +
       (s.due > 0
         ? '<button class="review-card" data-review><div class="rc-left">' +
           '<div class="rc-title">复习到期词</div>' +
@@ -238,11 +320,22 @@
           '<div class="rc-badge">' + s.due + '</div></button>'
         : '<div class="review-card idle"><div class="rc-left"><div class="rc-title">今天没有到期复习</div>' +
           '<div class="rc-sub">按计划学习新内容就好</div></div><div class="rc-badge ok">✓</div></div>') +
-      speakCard +
-      dlgSection +
-      '<div class="path-wrap">' + unitBlocks + '</div>';
+      speakCard;
 
     root.querySelector('[data-back]').addEventListener('click', function () { LP.go('#/'); });
+    root.querySelectorAll('[data-hero]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        LP.startLesson(langId, b.getAttribute('data-hero'), 'lesson');
+      });
+    });
+    root.querySelectorAll('[data-chest]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var res = LP.store.openChest(langId, b.getAttribute('data-chest'));
+        if (!res) return;
+        LP.sfx.chest();
+        showChest(res.xp, function () { path(root, langId); });
+      });
+    });
     root.querySelectorAll('[data-review]').forEach(function (b) {
       b.addEventListener('click', function () { LP.startLesson(langId, null, 'review'); });
     });
@@ -371,6 +464,16 @@
         (r < 0.8 ? '慢' : r < 0.95 ? '正常' : '快') + '</button>';
     }).join('');
 
+    var ach = LP.game.achievements();
+    var achUnlocked = ach.filter(function (a) { return a.unlocked; }).length;
+    var achHtml = ach.map(function (a) {
+      return '<div class="ach' + (a.unlocked ? ' on' : '') + '">' +
+        '<span class="ach-ico">' + (a.unlocked ? a.icon : '🔒') + '</span>' +
+        '<span class="ach-name">' + LP.util.esc(a.name) + '</span>' +
+        '<span class="ach-desc">' + LP.util.esc(a.desc) + '</span></div>';
+    }).join('');
+    var sfxOn = st.profile.sfx !== false;
+
     root.innerHTML =
       topbar('<span class="tb-sp"></span>',
         '<div class="brand-name">我的</div><div class="brand-sub">全程免费 · 数据在本机</div>',
@@ -379,6 +482,15 @@
         '<div class="chips">' + goalPills + '</div>' +
         '<div class="card-tip">达标后会记入连续天数。当前连续 ' + LP.store.streakNow() + ' 天，最长 ' +
         (st.profile.bestStreak || 0) + ' 天。</div></section>' +
+      '<section class="card"><div class="card-title">成就徽章 <span class="ct-num">' +
+        achUnlocked + '/' + ach.length + '</span></div>' +
+        '<div class="ach-grid">' + achHtml + '</div></section>' +
+      '<section class="card"><div class="card-title">音效</div>' +
+        '<div class="chips">' +
+          '<button class="chip' + (sfxOn ? ' on' : '') + '" data-sfx="1">开</button>' +
+          '<button class="chip' + (!sfxOn ? ' on' : '') + '" data-sfx="0">关</button>' +
+        '</div>' +
+        '<div class="card-tip">答对的“叮”、答错的“嗡”、升级的小号声，全部现场合成，不下载任何音频文件。</div></section>' +
       '<section class="card"><div class="card-title">发音</div>' +
         '<div class="chips">' + ratePills + '</div>' +
         '<div class="row"><span>测试你的设备有没有语音包</span>' +
@@ -409,6 +521,14 @@
         '<div class="card-tip">只清空该语言的关卡与词表记录，课程内容不受影响。</div></section>' +
       '<div class="note">语径 LingoPath · 纯本地学习工具，无账号、无广告、无订阅。语音由系统提供，首次点喇叭可能需要联网下载语音包。</div>';
 
+    root.querySelectorAll('[data-sfx]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var on = b.getAttribute('data-sfx') === '1';
+        LP.store.setSfx(on);
+        settings(root);
+        if (on) LP.sfx.correct();
+      });
+    });
     root.querySelectorAll('[data-goal]').forEach(function (b) {
       b.addEventListener('click', function () {
         LP.store.setGoal(Number(b.getAttribute('data-goal')));

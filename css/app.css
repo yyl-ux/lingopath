@@ -246,6 +246,52 @@ h1, h2, h3 { margin: 0; }
 .unit-meta { margin-top: 4px; font-size: 11px; color: var(--text2); font-weight: 700; }
 .unit-del { padding: 4px 12px 8px; text-align: right; }
 
+/* ---------- 继续学习卡片 ---------- */
+.hero {
+  margin: 14px 0 2px;
+  padding: 14px 16px 16px;
+  border-radius: 20px;
+  background: #fff;
+  border: 2px solid var(--hcc);
+  box-shadow: 0 3px 0 rgba(0, 0, 0, .06);
+}
+.hero-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.hero-k { font-size: 11px; font-weight: 800; letter-spacing: .06em; color: var(--text2); }
+.hero-lv { font-size: 11px; font-weight: 800; padding: 2px 9px; border-radius: 99px; background: var(--hcc); color: #fff; }
+.hero-t { font-size: 19px; font-weight: 800; margin: 7px 0 3px; overflow-wrap: anywhere; }
+.hero-s { font-size: 12px; color: var(--text2); margin-bottom: 12px; overflow-wrap: anywhere; }
+.hero-btn {
+  width: 100%; border: none; border-radius: 14px; padding: 12px;
+  background: var(--hcc); color: #fff; font-size: 15px; font-weight: 800;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, .16); cursor: pointer;
+  transition: transform .06s, box-shadow .06s;
+}
+.hero-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 rgba(0, 0, 0, .16); }
+.hero.cleared { border-color: var(--green); }
+
+/* ---------- 单元完成度圆环 ---------- */
+.unit-head { display: flex; align-items: flex-start; gap: 10px; }
+.unit-head-l { flex: 1; min-width: 0; }
+.unit-ring {
+  flex: none; width: 46px; height: 46px; border-radius: 50%;
+  background: conic-gradient(var(--ucc) calc(var(--up) * 1%), var(--line) 0);
+  display: grid; place-items: center;
+}
+.unit-ring i {
+  width: 36px; height: 36px; border-radius: 50%; background: #fff;
+  display: grid; place-items: center; font-style: normal;
+  font-size: 10.5px; font-weight: 800; color: var(--text2);
+}
+.unit.cleared { border-color: var(--ucc); }
+.unit.cleared .unit-ring i { color: var(--green-d); }
+.sec-title.top-gap { margin-top: 26px; }
+.sec-title.sub { margin: 20px 4px 10px; font-size: 14px; }
+@keyframes nodepulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(88, 204, 2, .45); }
+  50% { box-shadow: 0 0 0 12px rgba(88, 204, 2, 0); }
+}
+.node.next { animation: nodepulse 2.2s ease-out infinite; }
+
 .path { display: flex; flex-direction: column; align-items: center; padding: 10px 0 4px; }
 .prow {
   display: flex;
@@ -1092,3 +1138,77 @@ h1, h2, h3 { margin: 0; }
   .exam-top { gap: 6px; }
   .dlg-name { padding-right: 36px; }
 }
+
+/* ---------- 本周联赛 ---------- */
+.league { background: #fff; border: 2px solid var(--line); border-radius: 16px; overflow: hidden; }
+.lg-row { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-bottom: 1px solid var(--line); }
+.lg-row:last-child { border-bottom: none; }
+.lg-row.me { background: var(--green-l); }
+.lg-rank { width: 20px; font-size: 12px; font-weight: 800; color: var(--text2); text-align: center; flex: none; }
+.lg-ava { font-size: 18px; flex: none; }
+.lg-name { flex: 1; min-width: 0; font-size: 13px; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lg-xp { font-size: 12px; font-weight: 800; color: var(--text2); flex: none; }
+.lg-row.me .lg-name, .lg-row.me .lg-xp, .lg-row.me .lg-rank { color: var(--green-d); }
+
+/* ---------- 成就徽章 ---------- */
+.ct-num { float: right; font-size: 12px; font-weight: 700; color: var(--text2); }
+.ach-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.ach {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 10px 6px; border-radius: 14px; min-width: 0; text-align: center;
+  background: var(--bg2); border: 2px solid transparent;
+}
+.ach.on { background: #fff; border-color: var(--green); }
+.ach-ico { font-size: 22px; filter: grayscale(1); opacity: .45; }
+.ach.on .ach-ico { filter: none; opacity: 1; }
+.ach-name { font-size: 11.5px; font-weight: 800; }
+.ach.on .ach-name { color: var(--green-d); }
+.ach-desc { font-size: 10px; line-height: 1.35; color: var(--text2); overflow-wrap: anywhere; }
+
+/* ---------- 宝箱 ---------- */
+.chest-wrap { padding: 10px 12px 14px; text-align: center; }
+.chest {
+  width: 100%; border: none; border-radius: 14px; padding: 11px;
+  background: linear-gradient(135deg, #ffd84d, #ffb020); color: #7a4b00;
+  font-weight: 800; font-size: 14px; box-shadow: 0 4px 0 #d98d00;
+  cursor: pointer; animation: chestBob 1.8s ease-in-out infinite;
+}
+.chest:active { transform: translateY(2px); box-shadow: 0 2px 0 #d98d00; }
+.chest.opened { background: var(--bg2); color: var(--text2); box-shadow: none; animation: none; font-size: 12.5px; }
+@keyframes chestBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+.chest-modal { position: fixed; inset: 0; z-index: 99; display: grid; place-items: center; padding: 20px; background: rgba(0, 0, 0, .55); }
+.chest-box {
+  width: 100%; max-width: 300px; padding: 24px; border-radius: 22px;
+  background: #fff; text-align: center; animation: chestPop .36s cubic-bezier(.2, 1.4, .4, 1);
+}
+@keyframes chestPop { from { transform: scale(.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.chest-emoji { font-size: 56px; }
+.chest-title { font-size: 17px; font-weight: 800; margin: 6px 0 2px; }
+.chest-xp { font-size: 22px; font-weight: 800; color: #ff9600; margin-bottom: 16px; }
+
+/* ---------- 陪练角色 ---------- */
+.hero-npc { display: flex; align-items: center; gap: 8px; margin: 0 0 12px; }
+.hero-ava { width: 32px; height: 32px; flex: none; border-radius: 50%; background: var(--bg2); display: grid; place-items: center; font-size: 18px; }
+.hero-say { font-size: 12px; color: var(--text2); overflow-wrap: anywhere; }
+.fb { display: flex; gap: 10px; align-items: flex-start; }
+.fb-npc { width: 36px; height: 36px; flex: none; border-radius: 50%; background: #fff; display: grid; place-items: center; font-size: 19px; box-shadow: 0 1px 3px rgba(0, 0, 0, .12); }
+.fb-txt { flex: 1; min-width: 0; }
+.fb-combo { font-weight: 800; color: var(--green-d); }
+
+/* ---------- 答题动效 ---------- */
+@keyframes fxPop { 0% { transform: scale(1); } 45% { transform: scale(1.022); } 100% { transform: scale(1); } }
+@keyframes fxShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-7px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(3px); }
+}
+.lesson-body.fx-ok { animation: fxPop .34s ease-out; }
+.lesson-body.fx-bad { animation: fxShake .36s ease-in-out; }
+@keyframes comboGlow {
+  0% { box-shadow: inset 0 0 0 0 rgba(88, 204, 2, 0); }
+  30% { box-shadow: inset 0 0 90px 0 rgba(88, 204, 2, .35); }
+  100% { box-shadow: inset 0 0 0 0 rgba(88, 204, 2, 0); }
+}
+.lesson.fx-combo { animation: comboGlow .9s ease-out; }

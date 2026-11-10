@@ -202,13 +202,45 @@
     if (ex.item && ex.type !== 'match') LP.store.recordAnswer(cur.langId, ex.item, ok);
     setProgress(true);
 
+    cur.combo = ok ? (cur.combo || 0) + 1 : 0;
+    if (ok) {
+      LP.sfx.correct();
+      if (cur.combo > 0 && cur.combo % 5 === 0) LP.sfx.combo();
+    } else {
+      LP.sfx.wrong();
+    }
+
+    var bodyEl = LP.root.querySelector('#lbody');
+    if (bodyEl) {
+      bodyEl.classList.remove('fx-ok', 'fx-bad');
+      void bodyEl.offsetWidth;
+      bodyEl.classList.add(ok ? 'fx-ok' : 'fx-bad');
+    }
+    var lessonEl = LP.root.querySelector('.lesson');
+    if (lessonEl) {
+      lessonEl.classList.remove('fx-combo');
+      if (ok && cur.combo >= 5) {
+        lessonEl.classList.add('fx-combo');
+        setTimeout(function () {
+          if (lessonEl) lessonEl.classList.remove('fx-combo');
+        }, 900);
+      }
+    }
+
+    var npc = LP.game.npc(cur.langId);
     var foot = LP.root.querySelector('#foot');
     var isLast = cur.i >= cur.exercises.length - 1;
+    var combo = ok && cur.combo >= 3 ? '连对 ' + cur.combo + ' 题' : '';
     foot.className = 'foot ' + (ok ? 'ok' : 'bad');
     foot.innerHTML =
       '<div class="fb">' +
-        '<div class="fb-title">' + (ok ? '✅ 太棒了！' : '❌ 正确答案：' + esc(correctText || '')) + '</div>' +
-        '<div class="fb-sub">' + (ok ? '记住了，继续' : '已经把它安排进复习计划') + '</div>' +
+        '<div class="fb-npc">' + npc.emoji + '</div>' +
+        '<div class="fb-txt">' +
+          '<div class="fb-title">' + (ok ? '✅ ' + esc(LP.game.react(true)) : '❌ 正确答案：' + esc(correctText || '')) + '</div>' +
+          '<div class="fb-sub">' + (ok
+            ? (combo ? '<span class="fb-combo">' + combo + '</span>' : '记住了，继续')
+            : esc(LP.game.react(false)) + ' · 已把它安排进复习计划') + '</div>' +
+        '</div>' +
       '</div>' +
       '<button class="btn ' + (ok ? 'primary' : 'danger') + '" id="next">' + (isLast ? '完成' : '继续') + '</button>';
     foot.querySelector('#next').addEventListener('click', function () {
@@ -958,6 +990,7 @@
     }
 
     LP.store.addXp(xp);
+    if (examPassedNow) LP.sfx.levelUp();
     if (mode === 'lesson') LP.store.markLessonDone(cur.langId, cur.lesson.id, acc);
     else LP.store.touchStreak();
 
