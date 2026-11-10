@@ -142,6 +142,7 @@
       var units = grouped[lv].map(function (u) {
         var uDone = 0, uTotal = (u.lessons || []).length;
         var wDone = 0, wTotal = 0;
+        var learned = [];
         var langState = LP.store.getLang(langId);
         (u.lessons || []).forEach(function (l) {
           var r = langState.lessons[l.id];
@@ -149,7 +150,7 @@
           (l.items || []).forEach(function (it) {
             wTotal++;
             var wr = langState.items[it.w];
-            if (wr && wr.seen > 0) wDone++;
+            if (wr && wr.seen > 0) { wDone++; learned.push(it); }
           });
         });
         var rows = (u.lessons || []).map(function (l) {
@@ -165,6 +166,13 @@
             '<span class="node-ico">' + ico + '</span></button>' +
             '<div class="node-label">' + LP.util.esc(l.title) + '</div></div>';
         }).join('');
+        var chips = learned.slice(0, 3).map(function (it) {
+          return '<span class="uw"><b>' + LP.util.esc(it.w) + '</b>' + LP.util.esc(it.t) + '</span>';
+        }).join('');
+        if (learned.length > 3) chips += '<span class="uw more">+' + (learned.length - 3) + '</span>';
+        var wordsBox = learned.length
+          ? '<div class="unit-words">' + chips + '</div>'
+          : '<div class="unit-words empty">还没开始学，这一单元共 ' + wTotal + ' 个词</div>';
         return '<section class="unit" style="--ucc:' + (u.color || '#58cc02') + '">' +
           '<div class="unit-head"><div class="unit-title">' + LP.util.esc(u.title) + '</div>' +
           '<div class="unit-desc">' + LP.util.esc(u.desc || '') + '</div>' +
@@ -176,6 +184,7 @@
             bar(LP.util.pct(wDone, wTotal), 'sm') +
             '<span class="ub-num">' + wDone + '/' + wTotal + ' 词</span></div>' +
           '</div>' +
+          wordsBox +
           '<div class="unit-meta">' +
             (uDone === uTotal ? '✓ 本单元已通关' : uDone === 0 ? '尚未开始' : '已完成 ' + uDone + ' 关') +
           '</div></div>' +
