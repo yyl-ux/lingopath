@@ -77,6 +77,69 @@
         ['升调', '↗', '一般疑问句句尾上扬，表示在提问', 'Are you ready?', '你准备好了吗？']
       ]),
       read: R([['go to work', '去上班'], ['bread and milk', '面包和牛奶'], ['Are you ready', '你准备好了吗']])
+    },
+    {
+      id: 'en-s6', level: 'B2', title: '语调、节奏与言外之意', desc: '同样的词，语调不同意思就不同，这一课练出英语的“语气”',
+      items: S([
+        ['节奏', 'stress-timed', '英语按重音计时，重读词之间时长大致相等，虚词快速带过', 'The cat sat down', '猫坐下了'],
+        ['对比重音', 'contrast', '把要强调的词读得又重又高，其余压低压快', 'I said TUESday, not Thursday', '我说的是周二，不是周四'],
+        ['降调', '↘', '陈述句和特殊疑问句句尾下沉，表示确定、说完', 'Where are you from?', '你从哪儿来？'],
+        ['反意疑问', 'tag', '求证事实句尾用降调，真的在问用升调', "It's cold, isn't it?", '挺冷的，是吧？'],
+        ['言外之意', 'tone', '同一个词，语调一变态度就变，降调的 Really? 听着敷衍', 'Really?', '真的吗？'],
+        ['同化', 'assimilation', '相邻音互相影响，meet you 快读成“米丘”', 'meet you', '见到你'],
+        ['省音', 'elision', '拥挤的音节里有些音直接省掉，chocolate 只有两拍', 'chocolate', '巧克力'],
+        ['缩读', 'gonna', 'going to 缩成 gonna，want to 缩成 wanna', "I'm gonna go", '我要走了'],
+        ['补白音', 'uh / um', '犹豫时用 uh、um 填拍，母语者说话不是字字连贯', 'um, let me think', '嗯，让我想想']
+      ]),
+      read: R([['The cat sat down', '猫坐下了'], ["It's cold, isn't it", '挺冷的，是吧'], ['meet you', '见到你'], ['chocolate', '巧克力'], ["I'm gonna go", '我要走了'], ['Where are you from', '你从哪儿来'], ['um, let me think', '嗯，让我想想']])
+    },
+    {
+      id: 'en-s7', level: 'C1', title: '学术演讲语调与重音', desc: '长句、从句、引用与转折都有固定读法，练出学术英语的"稳"',
+      items: S([
+        ['从句降调', 'subordinate', '定语从句和状语从句的句尾降，但不要像主句那样深', 'The paper, which was published last year, argues that...', '去年发表的那篇论文认为...'],
+        ['列举升调', 'list', '列举项目前 n-1 项用升调，最后一项降调收尾', 'We need data, methods, and conclusions', '我们需要数据、方法论和结论'],
+        ['转折词重读', 'contrast', 'however、nevertheless、on the contrary 这类转折词要读得重且长', 'Nevertheless, the results are inconclusive', '不过，结果尚无定论'],
+        ['引用语调', 'quote', '直接引用前降调，引用内容内的逗号处升调续句', 'As Smith wrote, "the effect remains unclear"', '正如史密斯所写"效果仍不清楚"'],
+        ['段落重音', 'paragraph', '段落开头的 topic sentence 重音最高，结尾的 concluding sentence 降调最深', 'In summary, the evidence suggests...', '总之，证据表明...'],
+        ['插入语弱化', 'parenthetical', '插入成分如 I think、you know 读得快且轻，像括号里的内容', 'The study, I think, is quite convincing', '这项研究，我觉得，很有说服力'],
+        ['同位语重读', 'appositive', '同位语短语要重读，因为它提供了关键信息', 'My advisor, Professor Wang, agrees', '我的导师王教授同意'],
+        ['长句节奏', 'rhythm', '长句不要一口气读完，在逗号和连词处自然换气，保持重音间隔', 'Although the results were mixed, the overall trend is clear', '虽然结果好坏参半，但整体趋势是清晰的'],
+        ['学术缩略', 'contraction', '正式演讲里不用 gonna、wanna，要用 going to、want to', 'I am going to argue that...', '我要论证...'],
+        ['数字与公式', 'number', '学术演讲里读数字和公式要清楚，不要连读', 'p < 0.05', 'p 值小于 0.05']
+      ]),
+      read: R([['The paper, which was published last year', '去年发表的那篇论文'], ['however, the results are inconclusive', '不过，结果尚无定论'], ['As Smith wrote, the effect remains unclear', '正如史密斯所写效果仍不清楚'], ['In summary, the evidence suggests', '总之，证据表明'], ['I am going to argue that', '我要论证']])
+    },
+    {
+      id: 'en-s8', level: 'C2', title: '言外之意的语调与停顿', desc: '用克制的评价、对比重音和留白传达态度，不把每句话都读成字面意思',
+      items: S([
+        ['克制评价', 'understatement', '在熟悉语境中，not bad 可用平稳降调表示“还不错”；语气越平淡，夸赞越克制', 'Not bad.', '还不错（克制评价）'],
+        ['冷面幽默', 'deadpan', '说玩笑时可保持平常语速和较低音高，不刻意提示“我在开玩笑”；实际效果因语境而异', 'Not my finest hour.', '我可真够差劲的（冷面自嘲）'],
+        ['反讽拉长', 'sarcasm', '反讽时常把关键词拖长或加重，让字面褒义与语境冲突；并非所有反讽都靠夸张语调', 'Well, THAT went well.', '这下可真“顺利”（反讽）'],
+        ['对比重音', 'contrastive stress', '重读情态动词或限定词可纠正对方的理解，其他词相应放轻', 'I said MIGHT, not WILL.', '我说的是“可能”，不是“一定”'],
+        ['保留的降升调', 'fall-rise', '在部分英式英语语境中，interesting 用降升调可暗示“我未必认同”，不能只凭语调定论', 'That is... interesting.', '这倒挺“有意思”（含蓄保留）'],
+        ['犹豫停顿', 'hedge pause', '在 but 前短暂停顿、把 I might be wrong 读轻，可给不同意见留余地', 'I might be wrong, but...', '也许是我错了，不过…'],
+        ['请求缓冲', 'polite request', '正式请求常用轻柔语调和自然停顿降低压迫感；句尾升调或降升调因说话者与地区而异', 'Would it be possible to reschedule?', '是否可以改期？'],
+        ['转折前停顿', 'pre-but pause', '先承认对方，再在 but 前稍停，可让转折更清晰，而不是突然否定', 'I see your point, but...', '我理解你的意思，不过…'],
+        ['补救重音', 'repair stress', '重读 did 可强调“我确实已经道过歉”，用于回应质疑时也可能显得不耐烦', 'I DID say I was sorry.', '我确实说过对不起了'],
+        ['笑点留白', 'comic pause', '冷面幽默常在笑点前后留短暂停顿，不急着笑或解释，让听众自己领会', 'Great. Another meeting.', '太好了。又开会（冷面反讽）']
+      ]),
+      read: R([['Not bad', '还不错（克制评价）'], ['Well, THAT went well', '这下可真“顺利”（反讽）'], ['I said MIGHT, not WILL', '我说的是“可能”，不是“一定”'], ['I might be wrong, but', '也许是我错了，不过'], ['Would it be possible to reschedule', '是否可以改期？'], ['Great. Another meeting', '太好了。又开会（冷面反讽）']])
+    },
+    {
+      id: 'en-s9', level: 'C2', title: '长句的停顿、焦点与礼貌', desc: '一句话的信息重心放在哪里，往往比用词更能决定对方怎么理解你',
+      items: S([
+        ['信息焦点', 'nucleus placement', '句子的主要重音通常落在新信息上，具体位置随问答语境移动，不是固定读法', 'I sent the report on MONDAY.', '我是在周一发的报告（焦点是周一）'],
+        ['对比焦点', 'contrastive focus', '对比两个选项时，重读被区分的那一项，其余部分相应放轻；重音位置改变会改变含义', 'I said the BLUE one, not the black one.', '我说的是蓝色的那个，不是黑色的'],
+        ['礼貌缓冲', 'softener', '正式请求常把语气放轻、配合降升调或轻声，并加入缓冲成分；具体升降因说话者、地区与场合而异', 'I was wondering if you might...', '我想请问您是否能…'],
+        ['功能词弱读', 'weak forms', '冠词、介词、of 等常弱读，重音留给实词；of 常读 /əv/，其中 /v/ 在辅音前常脱落，但不宜一概写成 /ə/', 'a cup of tea', '一杯茶（of 常弱读为 /əv/ 或 /ə/）'],
+        ['确认升调', 'rising tag', '附加问句可用升调表示真正询问，用降调则表示期待对方同意；两种读法态度不同', 'You are coming, aren\'t you?', '你会来的，对吧？'],
+        ['列举停顿', 'listing pauses', '列举多项时在各项之间短停；句末的提示更多靠前面各项升调、最后一项降调来实现，停顿长短则因说话者而异', 'We need paper, ink, and toner.', '我们需要纸、墨和碳粉'],
+        ['长句换气', 'breath group', '长句按意义分组换气，通常不在主语与谓语之间硬断；换气点也会影响听者的理解节奏', 'Although the data are limited, the trend is clear.', '尽管数据有限，趋势是清楚的'],
+        ['插入语低音', 'parenthetical', '插入的评论常读得更快更低，与主句拉开层次；读成同样重会显得在补充重要信息', 'The plan, at least in my view, needs more testing.', '这个计划，至少在我看来，还需要更多测试'],
+        ['强调助动词', 'do-support stress', '重读 do/did 可强调“确实”，常用于回应质疑；在部分语境中也可能显得防备', 'I DO understand your concern.', '我确实理解你的担忧'],
+        ['收尾降调', 'finality', '把结论句读成明显降调，表示话说完了；句尾上扬则可能留下继续讨论的余地', 'That is settled, then.', '那就这么定了']
+      ]),
+      read: R([['I sent the report on MONDAY', '我是在周一发的报告'], ['I said the BLUE one, not the black one', '我说的是蓝色的那个'], ['I was wondering if you might', '我想请问您是否能…'], ['We need paper, ink, and toner', '我们需要纸、墨和碳粉'], ['I DO understand your concern', '我确实理解你的担忧'], ['That is settled, then', '那就这么定了']])
     }
   ]);
 
@@ -158,6 +221,85 @@
         ['鼻浊音 が', 'ŋa', '句中的 が 常读成鼻音，更自然', 'かぎ', '钥匙']
       ]),
       read: R([['えんぴつ', '铅笔'], ['きって', '邮票'], ['おばあさん', '奶奶']])
+    },
+    {
+      id: 'ja-s5', level: 'B1', title: '敬语与口语缩略音', desc: '课本日语和街上日语不一样，这一课练出地道的口语节奏',
+      items: S([
+        ['ます 的弱读', 'masu → mas', '敬语词尾 ます 语速快时常弱化成 mas，す 只剩一点气音', 'わかります', '明白了'],
+        ['〜ている → てる', 'teru', '口语省掉 い，正在进行只说 てる', '食べてる', '正在吃'],
+        ['〜てしまう → ちゃう', 'chau', 'てしまう 缩成 ちゃう，带“不小心、完了”的语气', '忘れちゃった', '忘掉了'],
+        ['〜ておく → とく', 'toku', 'ておく 缩成 とく，表示提前做好', 'やっておく', '先做好'],
+        ['〜では → じゃ', 'ja', 'では 缩成 じゃ，じゃない 就是ではない', 'じゃない', '不是'],
+        ['〜という → って', 'tte', '引述别人的话时，という 常缩成 って', 'だめって', '说不行'],
+        ['〜のだ → んだ', 'nda', '解释语气的 の 常变 ん，行くんだ 表示“原来是去啊”', '行くんだ', '原来是去啊'],
+        ['です → っす', 'ssu', '更随意的缩略，です 只剩“斯”，多见于男性口语', 'そうっす', '是这样的（口语）'],
+        ['ら 脱落', 'ran → n', '口语常吞 ら 音，わからない 说成 わかんない', 'わかんない', '不懂（口语）']
+      ]),
+      read: R([['わかります', '明白了'], ['食べてる', '正在吃'], ['忘れちゃった', '忘掉了'], ['やっておく', '先做好'], ['じゃない', '不是'], ['だめって', '说不行'], ['そうっす', '是这样的（口语）'], ['わかんない', '不懂（口语）']])
+    },
+    {
+      id: 'ja-s6', level: 'B2', title: '外来语与特殊音便', desc: '动词变形的音变规律和片假名外来语，补上日语发音的最后两块拼图',
+      items: S([
+        ['促音便', 'itte', 'く つ る 结尾的动词变 て 形时发生促音，行く → 行って', '行って', '去了'],
+        ['撥音便', 'yonde', 'む ぶ ぬ 结尾的动词变ん，読む → 読んで', '読んで', '读（て形）'],
+        ['イ音便', 'kaite', 'く ぐ 结尾变い，書く → 書いて，ぐ 行要连浊成 いで', '書いて', '写（て形）'],
+        ['ファ フィ フォ', 'fa fi fo', '外来语专用的“法”行，用来还原英语的 f 音', 'ファミレス', '家庭餐厅'],
+        ['ティ ディ', 'ti di', '像“提”“迪”，用于 パーティー 这类词', 'パーティー', '派对'],
+        ['ヴ', 'vu', 'v 音写作ヴ，日常更常读成 バ', 'ヴァイオリン', '小提琴'],
+        ['ウィ ウェ ウォ', 'wi we wo', '外来语专用的补充音，用来还原 window 这类词的音', 'ウォーキング', '步行锻炼'],
+        ['ツァ チェ', 'tsa che', '补充音用来拼 tour、chess 等外来词', 'ツアー', '旅行团'],
+        ['外来语长音', 'chōon', '外来语大量拉长音，コーヒー 多一拍才地道', 'コーヒー', '咖啡'],
+        ['ジ 的统一', 'ji', '外来语的 ji 一律写 ジ，ジープ 就是 jeep', 'ジープ', '吉普车']
+      ]),
+      read: R([['行って', '去了'], ['読んで', '读（て形）'], ['書いて', '写（て形）'], ['パーティー', '派对'], ['コーヒー', '咖啡'], ['ツアー', '旅行团'], ['ファミレス', '家庭餐厅']])
+    },
+    {
+      id: 'ja-s7', level: 'C1', title: '新闻播报与书面朗读', desc: '新闻读起来和聊天完全不同，声调、停顿和措辞都有一套规矩',
+      items: S([
+        ['新闻基调', 'prosody', '先理解“谁、做了什么、结果如何”，以传达事实为先；平稳不等于语调毫无起伏，重要信息可用轻微音高变化和停顿突出', '政府は、新しい経済対策を発表しました。', '政府公布了新的经济对策。'],
+        ['意群停顿', 'bunsetsu', '以文节和意义块组织句子，在标点、从句边界或完整意群后短停；不要机械地在每个助词前停顿', '政府は／新しい経済対策を／発表しました。', '政府公布了新的经济对策。（“／”表示短停）'],
+        ['换气位置', 'breath', '长句先规划气口，在句号、逗号或完整意群后自然吸气；不要在词中或助词与其前词之间断开换气', '新しい経済対策について／政府は来週にも／具体案を示す方針です。', '关于新的经济对策，政府计划最快下周提出具体方案。'],
+        ['日语音高', 'pitch accent', '按标准语的音高读词语，有音高下核的词在核后降低音高；日语不靠逐词加大音量来制造重音', '東京に大雨警報が出ました。', '东京发布了大雨警报。'],
+        ['助词连读', 'particle', '助词は读わ、へ读え、を读お，并依附前词自然连读；音高随文节变化，不统一降调，也不额外重读', '気象庁は、東京都に大雨警報を出しました。', '气象厅向东京都发布了大雨警报。'],
+        ['数字与量词', 'number', '先确认日期、时刻、小数、百分比和量词的读法；数字与单位组成一个意群，避免读错或中途断开', '物価上昇率は２．３パーセントでした。', '物价上涨率为2.3%。'],
+        ['专名与多音字', 'proper noun', '人名、地名、机构名采用官方或通行读法；汉字词按语境确认读音，不凭字形猜测', '沖縄県の石垣市で、記録的な大雨となりました。', '冲绳县石垣市出现了创纪录的大雨。'],
+        ['原稿文体', 'style', '新闻原稿可见だ・である体、です・ます体和省略表达；照原稿读，不自行统一成敬体或补写词语', '政府は新しい経済対策を発表した。', '政府公布了新的经济对策。'],
+        ['立场与引语', 'attribution', 'わが国、当社带有叙述者立场，按原稿与发言主体使用，并非日本、公司名的固定替换词；引用要分清发言者与引文，不作戏剧化模仿', '官房長官は「事実関係を確認している」と述べました。', '官房长官说：“正在核实事实情况。”'],
+        ['语速与收尾', 'tempo', '以听清为准保持自然速度，按内容调整缓急、音高和停顿；句尾谓语读完整，陈述句自然收束，不套用固定字数速度', '速報です。北海道で震度５強の地震がありました。', '快讯。北海道发生了震度5强的地震。']
+      ]),
+      read: R([['わが国の経済', '我国的经济'], ['本日のニュース', '今天的新闻'], ['当社は発表しました', '本公司已宣布'], ['アメリカ大統領', '美国总统'], ['何パーセント', '百分之多少']])
+    },
+    {
+      id: 'ja-s8', level: 'C2', title: '遠回しと語尾のニュアンス', desc: '余韻、間、語尾の強弱で、同意・保留・拒否の度合いを丁寧に伝える',
+      items: S([
+        ['语尾留白', 'sentence-final fade', '「ちょっと…」の後は無理に文を完成させず、語尾を柔らかく保つ。沈黙の長さは関係性に合わせ、長く引き延ばしすぎない', '今日は、ちょっと…', '今天恐怕有点……（委婉拒绝）'],
+        ['否定缓冲', 'soft negative', '「難しいかもしれません」では、断定を避ける部分を明瞭に読み、最後まで急に声を小さくしない。柔らかさは曖昧な発音とは別', 'その日程は難しいかもしれません。', '那个日程可能不太好安排。'],
+        ['委婉请求', 'indirect request', '「お手数ですが」の後で軽く区切ると、前置きと依頼本文が聞き取りやすくなる。丁寧でも早口になりすぎない', 'お手数ですが／ご確認をお願いいたします。', '麻烦您确认一下。（“／”表示短停）'],
+        ['保留的回应', 'reserved response', '「そうですね」は肯定だけでなく考え込む合図にもなる。語尾を自然に下げる平穏な読み方を基本に、表情や後続文も手がかりにする', 'そうですね。もう少し考えさせてください。', '这个嘛，请让我再考虑一下。'],
+        ['确认语气', 'confirmation', '共有事実の確認では「よね」を穏やかに読む。強く押しつけると同意を強要する響きになることがある', 'この案で問題ありませんでしたよね。', '这个方案没有问题，对吧？'],
+        ['常体的思量', 'self-question', '「かな」は独り言や控えめな疑問に使い、語尾を重く断ち切らない。親しくない相手への質問を常体で済ませる場面とは分けて考える', 'この言い方、失礼じゃないかな。', '这种说法会不会失礼呢？'],
+        ['反讽的强调', 'ironic stress', '「さすがですね」の「さすが」を必要以上に褒めず、文脈によっては平坦に読むと反語になる。この種の反語は相手を傷つけるおそれがあるため、関係性を見極める', 'また直前に変更するなんて、さすがですね。', '又在最后关头更改，可真“不愧是”您啊。'],
+        ['自嘲的停顿', 'self-deprecating pause', '自虐は大げさに笑わず、要点の前で短く間を置くと自然になりやすい。深刻な話題では場を軽くしすぎない', 'さすがの私も／今回は参りました。', '就连我，这次也没辙了。（自嘲）'],
+        ['保留的对比', 'contrastive hedge', '「必ずしも」「一概には」を軽く際立たせ、否定語まで続けて読む。留保の一部を飲み込むと意味が変わる', '必ずしも／そうとは限りません。', '未必如此。'],
+        ['场面话与真意', 'context over prosody', '「検討しておきます」は約束とも緩やかな結論の保留ともなり得る。イントネーションだけで本音を断定せず、発言者の立場や前後の文脈で判断する', '社内で検討しておきます。', '我们会在公司内部研究一下。']
+      ]),
+      read: R([['今日は、ちょっと', '今天恐怕有点……'], ['お手数ですが、ご確認をお願いいたします', '麻烦您确认一下'], ['そうですね。もう少し考えさせてください', '这个嘛，请让我再考虑一下'], ['この言い方、失礼じゃないかな', '这种说法会不会失礼呢？'], ['必ずしもそうとは限りません', '未必如此'], ['社内で検討しておきます', '我们会在公司内部研究一下']])
+    },
+    {
+      id: 'ja-s9', level: 'C2', title: '長文の焦点と間', desc: '音高の山をどこに置くか、どこで間を取るかで、同じ文の伝わり方が変わる',
+      items: S([
+        ['情報焦点', 'focus', '文の核は新しい情報に置かれ、多くの場合は音高を上げて目立たせる。質問への答え方によって位置が変わり、文末を一律に強く読むのではない', '報告書は月曜日に送りました。', '报告书是周一发的（焦点是周一）'],
+        ['対比の卓立', 'contrast', '二つの選択肢を区別するとき、対比する語を音高と長さで目立たせ、残りを軽くする。日本語は音量よりも高低で対比を示すことが多い', '青いほうです、黒ではなく。', '是蓝色的那个，不是黑色的'],
+        ['譲歩の間', 'concessive pause', '「確かに」の後で短く間を置くと、後の反論が聞き手に予測しやすくなる。間を長く取りすぎると同意だけが残る', '確かに、コストは上がります。ただ、品質は保てます。', '确实，成本会上升。不过，质量能保住。'],
+        ['引用の区切り', 'quotation boundary', '引用の前後を少し下げて区切ると、話し手自身の意見と引用が混ざりにくい', '氏は「効果は限定的だ」と述べています。', '该氏表示“效果有限”。'],
+        ['列挙の抑揚', 'listing intonation', '列挙では各項目を軽く上げ、最後だけ下げると、まだ続くか終わるかが伝わりやすい', '紙とインク、それからトナー。', '纸、墨，还有碳粉。'],
+        ['丁寧な依頼', 'polite request', '依頼は語尾を強く上げず、柔らかく降ろすと押しつけがましくない。ただし地域や話し手で抑揚は異なる', '恐れ入りますが、少々お待ちいただけますか。', '不好意思，能请您稍等吗？'],
+        ['確認の上昇', 'confirmation rise', '確認の「ですね」は軽く上げ、断定の「ですよ」は下げる。同じ文でも上がり下がりで働きが変わる', '明日で大丈夫ですね。', '明天可以吧？'],
+        ['挿入句', 'parenthetical', '挿入句は速く低く読み、主文と層を分ける。同じ強さで読むと重要な補足に聞こえる', 'この案は、私見ですが、まだ検証が必要です。', '这个方案，依我之见，还需要验证。'],
+        ['対比の「は」', 'contrastive wa', '「は」を強く読むと対比や限定の含みが出る。助詞を強くしすぎると不自然になるため、文全体のバランスを見る', '費用は、こちら持ちです。', '费用由我们承担（强调费用）'],
+        ['締めの下降', 'finality', '結論は明確に下降させると区切りが伝わる。逆に上げると、まだ続ける余地があるように響く', 'では、それで決まりですね。', '那么，就这么定了。']
+      ]),
+      read: R([['報告書は月曜日に送りました', '报告书是周一发的'], ['青いほうです、黒ではなく', '是蓝色的那个，不是黑色'], ['確かに、コストは上がります', '确实，成本会上升'], ['恐れ入りますが、少々お待ちいただけますか', '不好意思，能请您稍等吗？'], ['この案は、私見ですが', '这个方案，依我之见'], ['では、それで決まりですね', '那么，就这么定了']])
     }
   ]);
 
@@ -215,6 +357,100 @@
         ['ㅖ', 'ye', '快速“衣—诶”，嘴更闭', '예', '是']
       ]),
       read: R([['개', '狗'], ['귀', '耳朵'], ['과일', '水果']])
+    },
+    {
+      id: 'ko-s4', level: 'A2', title: '收音与连音规则', desc: '收音怎么收、碰到下一个字怎么变，这是韩语拼读的关键一步',
+      items: S([
+        ['收音 ㄱ ㄷ ㅂ', 'k t p', '收音只发七个代表音，ㄱ ㄷ ㅂ 都只是闭住气流不出声', '밥', '饭'],
+        ['收音 ㄴ ㅁ ㅇ', 'n m ng', '鼻音收音，气流从鼻腔出来', '강', '江'],
+        ['收音 ㄹ', 'l', '舌尖抵上齿龈，读清晰的 l', '달', '月亮'],
+        ['连音', 'yeoneum', '收音遇到后面以元音开头的字要“搬家”过去', '한국어', '韩语'],
+        ['双收音', 'double', '两个收音只读一个，另一个移到后面元音前', '삶', '生活'],
+        ['鼻音化', 'bieumhwa', 'ㄱ ㄷ ㅂ 收音碰到 ㄴ ㅁ 时变成鼻音 ㅇ ㄴ ㅁ', '국물', '汤'],
+        ['ㄹ 化', 'yueumhwa', 'ㄹ 和 ㄴ 相邻时，ㄴ 被带成 ㄹ', '설날', '春节（阴历）'],
+        ['ㅎ 弱化', 'h', 'ㅎ 收音常不发音，或让后面的音送气', '많다', '多'],
+        ['紧音化', 'tensification', '收音后面接 ㄱ ㄷ ㅂ ㅅ ㅈ 时常读成紧音', '학교', '学校']
+      ]),
+      read: R([['밥', '饭'], ['강', '江'], ['한국어', '韩语'], ['국물', '汤'], ['설날', '春节（阴历）'], ['많다', '多'], ['학교', '学校'], ['달', '月亮']])
+    },
+    {
+      id: 'ko-s5', level: 'B1', title: '语调与间接引语的读法', desc: '语调定语气，间接引语有固定句式，学会就能自然转述别人的话',
+      items: S([
+        ['陈述语调', '↘', '요 体陈述句句尾下沉，表示说完了', '밥 먹었어요', '吃过饭了'],
+        ['是非疑问语调', '↗', '问“是不是”的疑问句句尾上扬', '점심 먹었어요?', '吃午饭了吗？'],
+        ['特指疑问语调', '↘', '带 어디 무엇 等疑问词的疑问句，句尾反而下沉', '어디에 가요?', '去哪儿？'],
+        ['命令语调', '→', '祈使句句尾放平，短促有力', '조금만 기다리세요', '请稍等一下'],
+        ['间接引语 -다고', 'dago', '转述陈述句：좋다고 했어 就是“他说喜欢”', '좋다고 했어', '说喜欢'],
+        ['间接引语 -냐고', 'nyago', '转述疑问句：어디 가냐고 물었어', '어디 가냐고 물었어', '问去哪儿'],
+        ['间接引语 -자고', 'jago', '转述提议：먹자고 했잖아', '먹자고 했잖아', '不是说了让吃饭嘛'],
+        ['间接引语 -라고', 'rago', '转述命令：빨리 가라고 했어', '빨리 가라고 했어', '让快点儿去'],
+        ['助词缩略', 'nan', '口语把助词和词干连读成一个音，나는 常说成 난', '난', '我嘛（口语）']
+      ]),
+      read: R([['밥 먹었어요', '吃过饭了'], ['어디에 가요', '去哪儿'], ['조금만 기다리세요', '请稍等一下'], ['좋다고 했어', '说喜欢'], ['어디 가냐고 물었어', '问去哪儿'], ['먹자고 했잖아', '不是说了让吃饭嘛'], ['빨리 가라고 했어', '让快点儿去'], ['난', '我嘛（口语）']])
+    },
+    {
+      id: 'ko-s6', level: 'B2', title: '外来语标记与发音习惯', desc: '韩语没有的音怎么用谚文拼，读外来语和汉字词时心里有数',
+      items: S([
+        ['辅音群拆分', 'cluster', '词首的 st、sk 等辅音群要拆开，story 写成 스토리', '스토리', '故事'],
+        ['f → ㅍ', 'f → p', '韩语没有 f，一律用 ㅍ 代替', '커피', '咖啡'],
+        ['v → ㅂ', 'v → b', 'v 用 ㅂ 表示，实际读近 b', '비타민', '维生素'],
+        ['z → ㅈ', 'z → j', 'z 读成 ㅈ，zero 就是 제로', '제로', '零'],
+        ['th → ㅌ', 'th → t', '咬舌音 th 变成 ㅌ，theme 读 테마', '테마', '主题'],
+        ['ㅟ ㅚ 单音化', 'wi', '外来语里的 ㅟ ㅚ 读短促单音，不读复合', '위스키', '威士忌'],
+        ['外来语紧音化', 'tensification', '外来语的 k t p 常读成紧音，更接近原音', '키스', '亲吻'],
+        ['r 和 l 都写 ㄹ', 'r / l', '外来语里 r、l 一律写成 ㄹ，靠习惯判断', '라디오', '收音机'],
+        ['长音不标记', 'long vowel', '外来语不标长音，컴퓨터 这类词按音节自然读，不用刻意拖长', '컴퓨터', '电脑'],
+        ['头音规则', 'dueum', '汉字词词首的 ㄹ ㄴ 会脱落或变 ㅇ，女子 读 여자', '여자', '女人']
+      ]),
+      read: R([['스토리', '故事'], ['커피', '咖啡'], ['비타민', '维生素'], ['제로', '零'], ['테마', '主题'], ['위스키', '威士忌'], ['키스', '亲吻'], ['라디오', '收音机'], ['컴퓨터', '电脑'], ['여자', '女人']])
+    },
+    {
+      id: 'ko-s7', level: 'C1', title: '正式演讲语调', desc: '发表演讲、答辩、会议致辞都要有一套正式的读法，和平常聊天不一样',
+      items: S([
+        ['句首升高', 'onset', '正式演讲每句开头语调略升，引起听众注意', '여러분, 안녕하십니까', '各位，大家好'],
+        ['句尾降稳', 'ending', '陈述句通常以降调收稳；一般疑问句常用升调，也可依语境采用其他语调', '우리는 경제 성장을 이뤘습니다', '我们实现了经济增长'],
+        ['列举升调', 'list', '列举时末项前各项用升调，末项用降调结束', '첫째, 둘째, 셋째입니다', '第一、第二、第三'],
+        ['强调重读', 'emphasis', '关键词（尤其是数字和论点）比其他词重且长', '2030년까지 50퍼센트 달성', '到 2030 年达成 50%'],
+        ['长句停顿', 'pause', '复合句在 은데、그래서、하지만 等连接词处停顿', '열심히 노력했지만 결과는 미미했습니다', '虽然努力了但结果甚微'],
+        ['敬语清晰', 'honorific', '正式演讲里 ㅂ니다/습니다 结尾要读清楚，不要吞成요', '저는 주장합니다', '我主张'],
+        ['专有名词', 'proper', '人名（李 / 이）、地名（首尔 / 서울）、组织名读法固定', '이명박 전 대통령', '李明博前总统'],
+        ['汉字词重音', 'hanja', '标准韩语没有固定词重音，경제（经济）、사회（社会）等汉字词的词尾音节也无需固定重读', '사회 문제 해결', '社会问题解决'],
+        ['演讲节奏', 'rhythm', '正式演讲语速比日常慢，约每分钟 200-230 音节', '저는 세 가지 점을 말씀드리겠습니다', '我要说三点'],
+        ['避免口语', 'register', '演讲里不要用 요 结尾的口语体，要用 ㅂ니다/습니다', '우리가 해야 할 일은 분명합니다', '我们应该做的事很明确']
+      ]),
+      read: R([['경제 성장', '经济增长'], ['사회 문제', '社会问题'], ['저는 주장합니다', '我主张'], ['우리가 해야 할 일', '我们应该做的事'], ['결론적으로', '总之']])
+    },
+    {
+      id: 'ko-s8', level: 'C2', title: '敬语层级与言外之意', desc: '用语尾、停顿和克制的重音表达礼貌、保留、反讽与幽默',
+      items: S([
+        ['话尾留白', 'trailing off', '「글쎄요…」后不必马上补完整句，可稍停表示犹豫；拖得过长也可能显得敷衍，需结合关系和后续回应', '글쎄요…', '这个嘛……（犹豫）'],
+        ['委婉拒绝', 'soft refusal', '说「조금 곤란할 것 같아요」时，委婉不等于吞音；곤란할 것 같아요 要读清，整体音量平稳即可', '이번 주말은 조금 곤란할 것 같아요.', '这个周末我可能不太方便。'],
+        ['합니다体', 'formal ending', '正式汇报中 -습니다/-ㅂ니다 句尾通常读清并自然收束；不必逐字重读，也不必把每句都读成强硬降调', '검토 후에 말씀드리겠습니다.', '我们研究后再向您汇报。'],
+        ['해요体', 'polite informal', '해요体可同时保持礼貌与自然口语感；陈述句常平稳收尾，疑问句语调随说话者与语境变化', '확인해 드릴게요.', '我帮您确认一下。'],
+        ['半语提议', 'plain suggestion', '亲密关系中的「그렇게 하자」可用轻松降调表示提议；对不熟或上位者不能仅凭语气轻松就省略敬语', '그렇게 하자.', '就这么办吧。'],
+        ['思索回应', 'thinking response', '「그렇군요…」可表示理解，也可为下一句保留意见作铺垫；不要只凭语调认定同意', '그렇군요… 조금 더 생각해 볼게요.', '原来如此……我再考虑一下。'],
+        ['反讽', 'ironic intonation', '「대단하시네요」在特定语境中可借过度称赞表达反讽；不要每次都夸张重读，也要留意可能显得挖苦', '또 마감 직전에 바꾸셨어요? 대단하시네요.', '又在截止前改了？可真“了不起”啊。'],
+        ['自嘲', 'self-deprecation', '自嘲时常把笑点前的停顿放短、语气放平，让听众自己领会；严肃场合要控制玩笑程度', '또 실수했네요. 저도 참 대단하죠.', '又失误了。我也真够“厉害”的吧。（自嘲）'],
+        ['缓冲停顿', 'hedge pause', '在「제 생각에는」等缓冲语后稍作停顿，可让不同意见听起来更有余地；停顿不必每句固定出现', '제 생각에는／다른 방법도 있을 것 같아요.', '我觉得／也许还有其他办法。（“／”表示短停）'],
+        ['保留认同', 'reserved agreement', '「그럴 수도 있겠어요」要读清可能性表达，句尾可自然收束，表示有限认同而不是完全承诺', '상황이 달라지면 그럴 수도 있겠어요.', '情况改变的话，也有可能那样。']
+      ]),
+      read: R([['글쎄요', '这个嘛……'], ['이번 주말은 조금 곤란할 것 같아요', '这个周末我可能不太方便'], ['검토 후에 말씀드리겠습니다', '研究后再回复您'], ['그렇게 하자', '就这么办吧'], ['제 생각에는 다른 방법도 있을 것 같아요', '我觉得也许还有其他办法'], ['그럴 수도 있겠어요', '也有可能那样']])
+    },
+    {
+      id: 'ko-s9', level: 'C2', title: '문장 강세와 정보 초점', desc: '같은 문장도 어디에 힘을 두느냐에 따라 전달되는 뜻이 달라진다',
+      items: S([
+        ['정보 초점', 'focus', '핵심 강세는 새 정보에 놓이며, 질문에 따라 위치가 달라진다. 문장 끝을 습관적으로 세게 읽는 것은 아니다', '보고서는 월요일에 보냈습니다.', '报告书是周一发的（焦点是周一）'],
+        ['대조 강세', 'contrastive stress', '두 선택지를 구분할 때는 대조되는 말을 세게, 나머지는 가볍게 읽는다. 강세 위치가 바뀌면 함의도 바뀐다', '파란색이요, 검은색 말고요.', '是蓝色的，不是黑色'],
+        ['양보의 쉼', 'concessive pause', '「확실히」 뒤에 짧게 쉬면 이어질 반론을 듣는 사람이 예상하기 쉽다. 쉼이 너무 길면 동의만 남는다', '확실히 비용은 늘어납니다. 다만 품질은 지킬 수 있습니다.', '确实成本会上升。不过质量能保住。'],
+        ['인용 경계', 'quotation boundary', '인용 앞뒤를 살짝 낮추어 끊으면 화자 자신의 의견과 인용이 섞이지 않는다', '그는 "효과는 제한적"이라고 말했습니다.', '他说“效果有限”。'],
+        ['열거 억양', 'listing', '열거에서는 각 항목을 가볍게 올리고 마지막만 내리면, 계속되는지 끝나는지가 잘 전달된다', '종이와 잉크, 그리고 토너.', '纸、墨，还有碳粉。'],
+        ['공손한 요청', 'polite request', '요청은 끝을 세게 올리지 않고 부드럽게 마무리하면 부담이 적다. 다만 관계와 상황에 따라 약한 상승이나 길게 끄는 억양이 더 자연스러울 수 있다', '죄송하지만 잠시만 기다려 주시겠어요?', '不好意思，能请您稍等吗？'],
+        ['확인 상승', 'confirmation rise', '확인의 「죠」는 가볍게 올리고 단정의 「요」는 내린다. 같은 말도 억양에 따라 기능이 달라진다', '내일이면 괜찮으시죠?', '明天可以吧？'],
+        ['삽입구', 'parenthetical', '삽입구는 빠르고 낮게 읽어 본문과 층을 나눈다. 같은 세기로 읽으면 중요한 보충처럼 들린다', '이 안은, 제 생각에는, 아직 검증이 필요합니다.', '这个方案，在我看来，还需要验证。'],
+        ['대조 조사', 'contrastive particle', '「은/는」을 세게 읽으면 대조나 한정의 함의가 생긴다. 조사만 지나치게 강조하면 부자연스러우므로 문장 전체 균형을 본다', '비용은 저희가 부담하겠습니다.', '费用由我们承担（强调费用）'],
+        ['마무리 하강', 'finality', '결론은 분명히 내리면 구분이 전달된다. 반대로 올리면 아직 더 논의할 여지가 있는 것처럼 들린다', '그럼 그렇게 정한 걸로 하죠.', '那就这么定了。']
+      ]),
+      read: R([['보고서는 월요일에 보냈습니다', '报告书是周一发的'], ['파란색이요, 검은색 말고요', '是蓝色的，不是黑色'], ['확실히 비용은 늘어납니다', '确实成本会上升'], ['죄송하지만 잠시만 기다려 주시겠어요', '不好意思，能请您稍等吗？'], ['이 안은, 제 생각에는', '这个方案，在我看来'], ['그럼 그렇게 정한 걸로 하죠', '那就这么定了']])
     }
   ]);
 
@@ -251,6 +487,98 @@
         ['qu', '/k/', 'u 不发音，只读“克”', 'queso', '奶酪']
       ]),
       read: R([['casa', '房子'], ['queso', '奶酪'], ['llave', '钥匙']])
+    },
+    {
+      id: 'es-s3', level: 'A2', title: '重音规则与分音节', desc: '西语重音位置有明确规则，先切音节再读，看到生词也不慌',
+      items: S([
+        ['平词重音', 'llana', '以元音、n、s 结尾的词，重音落在倒数第二个音节', 'casa', '房子'],
+        ['尖词重音', 'aguda', '以其他辅音结尾的词，重音落在最后一个音节', 'reloj', '手表'],
+        ['重音符号', 'tilde', '标了 ´ 的音节必须重读，哪怕违反默认规则', 'teléfono', '电话'],
+        ['二重元音', 'diptongo', '强弱元音相连只算一个音节，重音落在整个组合上', 'tiempo', '时间'],
+        ['元音断开', 'hiato', '两个强元音 a e o 相连必须分读两个音节', 'leer', '阅读'],
+        ['带符号的弱元音', 'día', '弱元音 i u 带 ´ 时二重元音拆开，重音落在它上', 'día', '天'],
+        ['分音节法', 'sílabas', '按音节连读，先切成 pro-fe-sor 再整词读', 'profesor', '教师'],
+        ['倒数第三重音', 'esdrújula', '重音在倒数第三音节的词必标 ´，照着读就行', 'fácil', '容易的']
+      ]),
+      read: R([['casa', '房子'], ['reloj', '手表'], ['teléfono', '电话'], ['tiempo', '时间'], ['leer', '阅读'], ['día', '天'], ['profesor', '教师'], ['fácil', '容易的']])
+    },
+    {
+      id: 'es-s4', level: 'B1', title: '语调、连读与西班牙/拉美差异', desc: '同一门语言两大地域口音，先学会连读，再听懂两边的人在说什么',
+      items: S([
+        ['陈述语调', '↘', '陈述句句尾下沉，答句短而有力', 'No quiero ir.', '我不想去'],
+        ['疑问语调', '↗', '是非疑问句句尾明显上扬，语调替你说“在问”', '¿Vienes mañana?', '你明天来吗？'],
+        ['元音连读', 'encadenar', '词尾元音和词首元音连成一个音，中间不停顿', 'Vamos a comer', '我们去吃吧'],
+        ['seseo', 's', '拉美大部分地区 z、ce、ci 一律读 s，不咬舌', 'zapato', '鞋'],
+        ['distinción', 'θ', '西班牙本土把 z、ce、ci 读成咬舌的 θ', 'cinco', '五'],
+        ['yeísmo', 'ʝ', '如今多数地区 ll 和 y 同音，都读“衣”', 'pollo', '鸡肉'],
+        ['vosotros / ustedes', 'vos', '西班牙称“你们”用 vosotros，拉美用 ustedes', 'vosotros sois', '你们是'],
+        ['词尾 s 气化', 's ~ h', '加勒比等地词尾 s 常气化甚至吞掉', 'buenos días', '早上好']
+      ]),
+      read: R([['No quiero ir', '我不想去'], ['Vienes mañana', '你明天来吗'], ['Vamos a comer', '我们去吃吧'], ['zapato', '鞋'], ['cinco', '五'], ['pollo', '鸡肉'], ['vosotros sois', '你们是'], ['buenos días', '早上好']])
+    },
+    {
+      id: 'es-s5', level: 'B2', title: '快速语流中的弱化与吞音', desc: '母语者说快了会吞哪些音，先知道才听得懂、学得像',
+      items: S([
+        ['-ado → -ao', 'ao', '分词里的 d 常被吞掉，cansado 说成 cansao', 'cansado', '累的'],
+        ['-ido → -ío', 'ío', '同理 d 脱落，perdido 口语说成 perdío', 'perdido', '丢失的'],
+        ['para → pa', "pa'", 'para 缩成 pa，语速快时几乎只剩一个音', 'para ti', '为了你'],
+        ['para el → pal', 'pal', 'para 和 el 连读缩合成 pal', 'pal cine', '去电影院（口语）'],
+        ['está → tá', 'tá', '句首元音常被吞，está aquí 只剩 tá aquí', 'está aquí', '在这儿'],
+        ['sheísmo', 'sh', '阿根廷等地 ll、y 读成 sh，yo 听起来像 sho', 'yo', '我'],
+        ['s 再弱化', 's', '快速语流里 s 只剩一点气声，甚至直接吞掉', 'más o menos', '差不多'],
+        ['nada → na', 'na', '口语里 nada 常吞尾音节，de nada 说成 de na', 'de nada', '不客气'],
+        ['me he 连读', 'mee', 'h 不发音，me he 连成“梅诶”，快读几乎一个音', 'me he ido', '我已经走了'],
+        ['词尾 r 脱落', 'r', '加勒比等地动词原形的词尾 r 常吞掉', 'cantar', '唱歌']
+      ]),
+      read: R([['cansado', '累的'], ['perdido', '丢失的'], ['para ti', '为了你'], ['pal cine', '去电影院（口语）'], ['está aquí', '在这儿'], ['yo', '我'], ['más o menos', '差不多'], ['me he ido', '我已经走了']])
+    },
+    {
+      id: 'es-s6', level: 'C1', title: '快速语流与口语省略', desc: '掌握连读、音段弱化和地区性省略，区分自然快语与正式发音',
+      items: S([
+        ['跨词元音连读', 'mi amigo → [mjaˈmiɣo]', '词尾元音与下一词的词首元音可合成一个音节；mi amigo 快读为三音节，中间不停顿', 'Mi amigo vive aquí.', '我朋友住在这里'],
+        ['相同元音融合', 'la abuela → [laˈβwela]', '相邻的相同元音常合并，la abuela 的两个 a 快读时只保留一个', 'La abuela está en casa.', '祖母在家里'],
+        ['a ver 的读法', '[aˈβeɾ]', 'a ver 是两个词、两个音节，重音在 ver；快读时元音间 b 常弱化为 [β]，不缩成单音节', 'A ver qué pasa.', '看看怎么回事'],
+        ['de que 的连读', '[ðe ke]', '在 seguro de que 这类语流中，de 的 d 弱化为 [ð]；de 和 que 仍是两个音节，k 保留', 'Estoy seguro de que vendrá.', '我确定他会来'],
+        ['estoy → toy', '[toj]', '在非正式快语中，estoy 的词首 es 可整个脱落，常听成 toy；正式表达仍用 estoy', 'Estoy cansado.', '我累了'],
+        ['元音间 d 脱落', 'todo → [ˈto.o]', '不少口音在自然快语中会弱化乃至吞掉元音间 d，todo 可听成 to-o；并非所有地区都如此', 'Todo está bien.', '一切都好'],
+        ['词尾 d 弱化或脱落', 'verdad → [beɾˈða]', 'verdad、usted 等词的词尾 d 在许多口音中会弱化或脱落，谨慎发音时可保留', 'Es verdad.', '这是真的'],
+        ['音节尾 s 气化或脱落', 'los niños → [lohˈniɲoh] ~ [loˈniɲo]', '加勒比、安达卢西亚等口音的音节尾 s 可变 [h] 或消失；具体程度因地区和语境而异', 'Los niños están aquí.', '孩子们在这儿'],
+        ['词尾 n 软腭化', 'están → [esˈtaŋ]', '加勒比等口音的词尾 n 可在停顿前读成 [ŋ]，听感接近英语的 ng，并非 n 消失', '¿Cómo están?', '他们怎么样？'],
+        ['va a 的元音融合', 'va a pasar → [ˈba.paˈsaɾ]', 'va 与后面的 a 在快读中常合并，少一个音节；pasar 的重音仍在 -sar，不会因句子变长而移位', 'No sé qué va a pasar mañana.', '我不知道明天会发生什么']
+      ]),
+      read: R([['mi amigo', '我的朋友'], ['la abuela', '祖母／外祖母'], ['a ver', '看看'], ['de que', '（连接成分）'], ['estoy cansado', '我累了'], ['todo está bien', '一切都好'], ['es verdad', '这是真的'], ['los niños', '孩子们'], ['¿cómo están?', '他们怎么样？'], ['va a pasar', '将会发生']])
+    },
+    {
+      id: 'es-s7', level: 'C2', title: '言外之意的语调与分寸', desc: '用重音、停顿和语调的细微变化表达反讽、保留与礼貌，不把弦外之音读成字面意思',
+      items: S([
+        ['礼貌请求的缓冲', 'petición atenuada', '正式请求可用轻柔、自然的语调，并在礼貌开场后稍停；句尾升降因地区和说话者而异', '¿Le importaría esperar un momento?', '您能否稍等片刻？'],
+        ['称谓切换', 'cambio de tratamiento', '说 Puedes llamarme... 时语速自然、句尾放松下降，可让从 usted 转向 tú 的邀请更亲切；人称变化才是主要标志', 'Puedes llamarme Ana.', '你可以叫我安娜'],
+        ['克制评价', 'atenuación', '在真诚评价的语境中，用平稳语调和适中音量说 no está mal，可传达“还不错”，而不是特别热烈的夸赞', 'No está mal.', '还不错（克制评价）'],
+        ['保留认同', 'concesión', '先承认合理部分，再在 pero 前稍停，并把重音落在需要调整的信息上；转折词和语境共同表明保留', 'Tiene sentido, pero habría que ajustarlo.', '有道理，不过需要调整'],
+        ['委婉拒绝', 'negativa atenuada', '清楚重读 ahora mismo 可把拒绝限定为“眼下不行”；句尾可平稳下降，不必把否定词拖得过长', 'Ahora mismo no, gracias.', '现在不行，谢谢'],
+        ['礼貌坚持', 'insistencia cortés', '把 perdona que insista 读得轻一些，在逗号处稍停，再说清实际请求，可避免听起来像突然指责', 'Perdona que insista, pero necesito una respuesta.', '恕我再坚持一下，但我需要一个答复'],
+        ['反讽语调', 'ironía', '在对方明显犯错的语境中，可稍拉长或加重 genio，让字面夸赞与语境冲突；并非所有反讽都有固定语调', '¡Qué genio!', '可真是个“天才”（反讽）'],
+        ['冷面幽默', 'humor seco', '讲荒诞经历时可保持平常语速，在关键细节前稍停，不必句句夸张；是否好笑取决于共同语境', 'Fue de película.', '简直像演电影（口语幽默）'],
+        ['暗示性停顿', 'pausa implicativa', '在 pero 前稍停并放轻前半句，可提示“会研究”还不是承诺；不能只凭停顿断定对方拒绝', 'Lo estudiaremos, pero no puedo prometerte nada.', '我们会研究，但我不能向你保证什么'],
+        ['可能性的重音', 'acento contrastivo', '重读 podría 可突出“只是可能”，与确定承诺形成对比；实际重音位置随要纠正的理解而变', 'Podría ser.', '有可能（保留判断）']
+      ]),
+      read: R([['¿Le importaría esperar un momento?', '您能否稍等片刻？'], ['Puedes llamarme Ana', '你可以叫我安娜'], ['No está mal', '还不错（克制评价）'], ['Tiene sentido, pero habría que ajustarlo', '有道理，不过需要调整'], ['Ahora mismo no, gracias', '现在不行，谢谢'], ['¡Qué genio!', '可真是个“天才”（反讽）']])
+    },
+    {
+      id: 'es-s8', level: 'C2', title: 'Acento informativo y pausas', desc: 'Dónde colocas el acento cambia lo que el oyente entiende',
+      items: S([
+        ['foco informativo', 'foco', 'El acento principal suele recaer en la información nueva y cambia según la pregunta; no se trata de subir siempre el final', 'El informe lo envié el LUNES.', '报告我是在周一发的（焦点是周一）'],
+        ['acento contrastivo', 'contraste', 'Al distinguir dos opciones se refuerza el término contrastado y se suaviza el resto; mover el acento cambia la implicación', 'Dije el AZUL, no el negro.', '我说的是蓝色的，不是黑色'],
+        ['pausa concesiva', 'concesión', 'Una pausa breve tras «es cierto» prepara la objeción; si se alarga demasiado, la transición suena dubitativa', 'Es cierto, el coste sube. Ahora bien, la calidad se mantiene.', '确实成本会上升。不过质量能保住。'],
+        ['límite de cita', 'cita', 'Bajar un poco la voz antes y después de la cita separa la opinión propia de la palabra ajena', 'Ella dijo: «El efecto es limitado».', '她说“效果有限”。'],
+        ['entonación enumerativa', 'enumeración', 'En una lista se elevan ligeramente los primeros elementos y se baja el último, para indicar si sigue o termina', 'Necesitamos papel, tinta y tóner.', '我们需要纸、墨和碳粉。'],
+        ['petición atenuada', 'petición', 'Una petición cortés no necesita subir mucho el final; bajarlo suavemente reduce la presión, aunque varía según el hablante', '¿Le vendría bien que lo dejáramos para el lunes?', '把它挪到周一您方便吗？'],
+        ['ascenso de confirmación', 'confirmación', 'La confirmación con «¿verdad?» suele subir ligeramente; la afirmación categórica baja. El mismo contenido cambia de función', 'Mañana está bien, ¿verdad?', '明天可以吧？'],
+        ['inciso', 'inciso', 'Los incisos se leen más rápidos y bajos para separarlos del hilo principal; con el mismo peso suenan a dato importante', 'El plan, en mi opinión, necesita más pruebas.', '这个计划，在我看来，还需要更多验证。'],
+        ['sujeto enfático', 'énfasis', 'Destacar el sujeto o el pronombre sirve para corregir una suposición; conviene mirar el conjunto para no sonar agresivo', 'El coste lo asumimos NOSOTROS.', '费用由我们承担（强调我们）'],
+        ['descenso final', 'cierre', 'Una conclusión con descenso claro marca el final; si se mantiene alta, el oyente espera que sigas hablando', 'Entonces, queda decidido.', '那么，就这么定了。']
+      ]),
+      read: R([['El informe lo envié el LUNES', '报告我是在周一发的'], ['Dije el AZUL, no el negro', '我说的是蓝色的，不是黑色'], ['Es cierto, el coste sube', '确实成本会上升'], ['¿Le vendría bien que lo dejáramos para el lunes?', '把它挪到周一您方便吗？'], ['El plan, en mi opinión', '这个计划，在我看来'], ['Entonces, queda decidido', '那么，就这么定了']])
     }
   ]);
 
@@ -284,6 +612,98 @@
         ['gn', '/ɲ/', '像“尼”带鼻音', 'ligne', '线']
       ]),
       read: R([['deux', '二'], ['maison', '房子'], ['bon', '好的']])
+    },
+    {
+      id: 'fr-s3', level: 'A2', title: '联诵与省音的取舍', desc: '什么时候要把词尾音“借”给下一个词，什么时候必须省，规则讲清楚',
+      items: S([
+        ['必联的联诵', 'z', '冠词、代词和动词之间的联诵必须读，s 读成 z', 'les amis', '朋友们'],
+        ['禁止联诵', '×', 'et 之后、单数名词之后不联诵', 'et elle', '和她'],
+        ['可联可不联', '~', '有些位置联不联都对，正式语体倾向联', 'pas assez', '不够'],
+        ['省音', 'élision', 'je le la ne 等词遇到元音开头要省元音，je + ai → j’ai', "j'ai", '我有'],
+        ['哑音 h', 'h muet', '哑音 h 等于没有，前面照常省音联诵', "l'homme", '男人'],
+        ['嘘音 h', 'h aspiré', '嘘音 h 会挡住省音联诵，le héros 不能缩写', 'le héros', '英雄'],
+        ['de + le → du', 'du', '介词合音是固定变化，de 和 le 缩成 du', 'du pain', '一些面包'],
+        ['à + les → aux', 'o', 'à les 缩成 aux，读“欧”', 'aux enfants', '对孩子们'],
+        ['que → qu’', "qu'", 'que 遇到元音同样省音，que + il → qu’il', "qu'il", '他（从句）']
+      ]),
+      read: R([['les amis', '朋友们'], ["j'ai", '我有'], ["l'homme", '男人'], ['le héros', '英雄'], ['du pain', '一些面包'], ['aux enfants', '对孩子们'], ["qu'il", '他（从句）'], ['pas assez', '不够']])
+    },
+    {
+      id: 'fr-s4', level: 'B1', title: '语调与口语略音', desc: '真实对话里的法语大量省音，学会这些缩略才跟得上日常语速',
+      items: S([
+        ['节奏组', 'groupe rythmique', '法语按节奏组连读，组尾微微上扬或下沉', 'Je vais au cinéma', '我去看电影'],
+        ['陈述语调', '↘', '整句到最后一个节奏组下沉，表示说完', "C'est fini.", '结束了'],
+        ['疑问语调', '↗', '口语疑问句可以只靠升调，不必加 est-ce que', 'Tu viens?', '你来吗？'],
+        ['tu es → t’es', "t'es", '口语吞掉 u，t’es où 就是“你在哪儿”', "t'es où?", '你在哪儿（口语）'],
+        ['tu as → t’as', "t'as", '同理省 u，t’as dit 就是“你说了”', "t'as dit", '你说了（口语）'],
+        ['il y a → y a', "y'a", 'il 几乎被吞掉，只剩一个“雅”', "y'a du pain", '有面包（口语）'],
+        ['ne 脱落', 'ne ∅', '口语否定句常丢 ne，靠 pas 表否定', 'je sais pas', '我不知道（口语）'],
+        ['弱 e 略音', 'e ∅', '词中不重读的 e 常省掉，samedi 只有两拍', 'samedi', '星期六']
+      ]),
+      read: R([['Je vais au cinéma', '我去看电影'], ["C'est fini", '结束了'], ['Tu viens', '你来吗'], ["t'es où", '你在哪儿（口语）'], ["t'as dit", '你说了（口语）'], ["y'a du pain", '有面包（口语）'], ['je sais pas', '我不知道（口语）'], ['samedi', '星期六']])
+    },
+    {
+      id: 'fr-s5', level: 'B2', title: '南北方言与快速口语', desc: '马赛和巴黎听起来不一样，快速口语还有自己的省略习惯',
+      items: S([
+        ['南方：词尾 e 发音', 'final e', '南方把词尾的 e 发出来，fête 读成两拍', 'fête', '节日'],
+        ['南方：鼻音带尾', 'nasal + n', '南方鼻音后常带轻微的 n，bon 听起来像“波嗯”', 'bon', '好的'],
+        ['北方：弱 e 大量脱落', 'e ∅', '巴黎语流里弱 e 几乎全省，mardi 只有两拍', 'mardi', '星期二'],
+        ['句尾 hein', 'ɛ̃', '加在句尾求认同，像“嘿嗯”', "C'est bien, hein?", '挺好的，对吧'],
+        ['句尾 quoi', 'kwa', '年轻人口语在句尾挂一个 quoi，没有实义', "C'est comme ça, quoi", '就是这么回事'],
+        ['il faut → faut', 'fo', 'il 被吞掉，faut pas 就是“不行”', 'faut pas', '不行（口语）'],
+        ['je ne sais pas → chais pas', 'ʃɛ pa', '最常见的口语否定缩略', 'chais pas', '不知道（口语）'],
+        ['联诵 z', 'z', 'vous、les 后面的联诵 s 读成 z，快读连成一片', 'vous avez', '你们有'],
+        ['小舌 r', 'ʁ', '全国统一小舌 r，南方老人偶有大舌 r 的痕迹', 'rire', '笑']
+      ]),
+      read: R([['fête', '节日'], ['bon', '好的'], ['mardi', '星期二'], ["C'est bien, hein", '挺好的，对吧'], ['faut pas', '不行（口语）'], ['chais pas', '不知道（口语）'], ['vous avez', '你们有'], ['rire', '笑']])
+    },
+    {
+      id: 'fr-s6', level: 'C1', title: '快速口语与元音弱化', desc: '掌握 e caduc、常见缩略、联诵边界与节奏语调',
+      items: S([
+        ['e caduc：有条件脱落', 'pə.ti → pti', '不重的 e 可随语速、语域和辅音环境脱落，并非所有 e 都读 /ə/；é /e/、è /ɛ/ 不适用', 'un petit café → un p\'tit café', '一小杯咖啡（口语）'],
+        ['je suis → chui / j\'suis', 'ʒə sɥi → ʃɥi / ʒsɥi', '快速非正式口语中 je suis 常读作 chui /ʃɥi/ 或 j\'suis /ʒsɥi/；标准书写仍是 je suis', 'Chui fatigué.', '我累了（很口语）'],
+        ['否定句常省 ne', 'nə → ∅', '非正式口语常省 ne，保留 pas、jamais、plus 等否定标记；正式表达倾向保留 ne，新闻播报并非统一“最慢语速”', 'Je ne comprends pas. → Je comprends pas.', '我不明白（较正式 → 口语）'],
+        ['省音有明确条件', 'ʒə + ɛm → ʒɛm', 'je、me、te、se、le、la、de、que 等在元音或哑音 h 前要省音；嘘音 h 前不省，并非任何位置都能省略', 'J\'aime cette idée.', '我喜欢这个主意。'],
+        ['联诵分必做、可做、禁做', 'le.z‿ɑ̃.fɑ̃', '后接元音音素时，限定词与名词之间通常必须联诵，如 les enfants；et 后和嘘音 h 前禁做，其他不少位置随语体可变', 'les enfants ; et elle', '孩子们（/z/ 联诵）；还有她（et 后不联诵）'],
+        ['plus tard 无联诵', 'ply taʁ', 'tard 以辅音 /t/ 开头，没有联诵条件，plus tard 中 s 通常不发音；plus 在元音前可有 /z/ 联诵，如 plus âgé', 'À plus tard !', '回头见！'],
+        ['嘘音 h 阻断省音与联诵', 'a.ʁi.ko', 'haricot 以嘘音 h 开头：h 本身不发音，但前面的词不省音、不联诵', 'Le haricot est vert.', '菜豆是绿的。'],
+        ['鼻元音不会自动弱化', 'ɑ̃ ɔ̃ ɛ̃', '鼻元音是独立音位，快速语流中仍保持鼻化；bon /bɔ̃/ 与 bonne /bɔn/ 的差异不能随意抹去', 'un bon livre ; une bonne idée', '一本好书；一个好主意'],
+        ['节奏组长度不固定', 'ʒə vu.dʁɛ | œ̃ ka.fe', '节奏组按意义和语流组织，并非固定 2–4 个音节；主要重音落在组末最后一个发音音节', 'Je voudrais | un café.', '我想要一杯咖啡（竖线为节奏组界）'],
+        ['问句不一律升调', 'ty vjɛ̃ ↗ ; u va.ty ↘', '陈述语序的是非问句常用升调 Tu viens ?；特殊疑问句常降调 Où vas-tu ?，语调还随语境和态度变化', 'Tu viens ? / Où vas-tu ?', '你来吗？/ 你去哪儿？']
+      ]),
+      read: R([['un p\'tit café', '一小杯咖啡（口语）'], ['Chui fatigué', '我累了（很口语）'], ['Je comprends pas', '我不明白（口语）'], ['J\'aime cette idée', '我喜欢这个主意'], ['les enfants', '孩子们'], ['À plus tard !', '回头见！'], ['Le haricot est vert', '菜豆是绿的'], ['une bonne idée', '一个好主意'], ['Je voudrais un café', '我想要一杯咖啡'], ['Tu viens ?', '你来吗？']])
+    },
+    {
+      id: 'fr-s7', level: 'C2', title: '反讽、停顿与委婉语气', desc: '用语境、节奏组和句尾语调表达 second degré 与有所保留的态度',
+      items: S([
+        ['second degré：没有固定反讽腔', 'sə.ɡɔ̃ də.ɡʁe', '反讽常靠语境和前后矛盾识别，可以平静地说，也可略微放慢；并非一律夸张升调或句尾降调', 'C\'est ça, bien sûr.', '可不是嘛，当然喽（语境中可反讽）'],
+        ['Tu m\'étonnes：两种解读', 'ty me.tɔn', '常说成“难怪、可不是嘛”，也可在特定语境中表怀疑；语义的褒贬主要由语境决定，不由单一语调决定', 'Tu m\'étonnes, il a dormi trois heures !', '可不是嘛，他才睡了三个小时！'],
+        ['Mon œil !', 'mɔ̃.n‿œj', 'mon 在元音前与 œil 联诵为 /n/；口语中常用短促有力的节奏表示不相信，语气强弱随说话者而变', 'Tu as changé ? Mon œil !', '你改了？我才不信！'],
+        ['Chapeau：真诚或反讽', 'ʃa.po', '真诚赞叹与反讽都可使用；重音仍在词尾音节，真假态度需结合上下文和面部表情判断', 'Chapeau, tout est à l\'envers.', '真有你的，全都弄反了（反讽）'],
+        ['Je veux bien, mais...', 'ʒə vø bjɛ̃ | mɛ', 'bien 后可稍作停顿，mais 引出真正的限制；不要把前半句单独理解成无条件答应', 'Je veux bien, mais pas ce soir.', '我可以，但今晚不行。'],
+        ['Disons que...', 'di.zɔ̃ kə', 'disons que 常作为一个引导节奏组，之后可短暂停顿；它常给后面的批评或评价留余地', 'Disons que c\'est perfectible.', '这么说吧，还有改进空间。'],
+        ['On va dire...', 'ɔ̃ va diʁ', '常连续轻读，真正的信息焦点落在后面的评价上；表示暂时这样概括，并非字面讨论“要说”这个动作', 'On va dire que c\'est un brouillon.', '就先当它是个草稿吧。'],
+        ['Pas forcément', 'pa fɔʁ.sə.mɑ̃', '主要重音落在节奏组末尾；可平静纠正前面的绝对说法，句尾升调或降调随对话态度变化', 'Pas forcément, ça dépend.', '不一定，要看情况。'],
+        ['À la rigueur', 'a la ʁi.ɡœʁ', '放在句首时可在其后稍作停顿，再接让步后的提议；它本身不规定必须升调或降调', 'À la rigueur, je peux venir.', '实在不行，我可以来。'],
+        ['Je vous en prie', 'ʒə vu.z‿ɑ̃ pʁi', 'vous en 通常作 /z/ 联诵；礼貌回应可平稳自然地说完，不必逐词停顿或把 vous 特别加重', 'Je vous en prie, entrez.', '您请进。']
+      ]),
+      read: R([['C\'est ça, bien sûr', '可不是嘛，当然喽（可反讽）'], ['Tu m\'étonnes', '可不是嘛；难怪如此'], ['Mon œil', '我才不信'], ['Chapeau', '佩服；干得漂亮（可反讽）'], ['Je veux bien, mais pas ce soir', '我可以，但今晚不行'], ['Disons que c\'est perfectible', '这么说吧，还有改进空间'], ['On va dire que c\'est un brouillon', '就先当它是个草稿吧'], ['Pas forcément, ça dépend', '不一定，要看情况'], ['À la rigueur, je peux venir', '实在不行，我可以来'], ['Je vous en prie, entrez', '您请进']])
+    },
+    {
+      id: 'fr-s8', level: 'C2', title: 'Accent d\'insistance et pauses', desc: 'Le placement de l\'accent change ce que l\'autre retient',
+      items: S([
+        ['focalisation', 'fwa.ka.li.za.sjɔ̃', 'L\'accent principal porte souvent sur l\'information nouvelle et se déplace selon la question ; on ne monte pas systématiquement en fin de phrase', 'Le rapport, je l\'ai envoyé LUNDI.', '报告我是在周一发的（焦点是周一）'],
+        ['accent contrastif', 'ak.sɑ̃ kɔ̃.tʁas.tif', 'Pour opposer deux choix, on renforce le terme opposé et on allège le reste ; déplacer l\'accent change le sous-entendu', 'J\'ai dit le BLEU, pas le noir.', '我说的是蓝色的，不是黑色'],
+        ['pause concessive', 'poz kɔ̃.sɛ.siv', 'Une pause brève après « certes » prépare l\'objection ; trop longue, elle rend la transition hésitante et affaiblit la concession', 'Certes, le coût augmente. Cependant, la qualité reste.', '确实成本会上升。不过质量能保住。'],
+        ['frontière de citation', 'fʁɔ̃.tjɛʁ də si.ta.sjɔ̃', 'Baisser légèrement la voix avant et après la citation sépare la parole d\'autrui de son propre commentaire', 'Elle a dit : « l\'effet est limité ».', '她说“效果有限”。'],
+        ['intonation énumérative', 'ɛ̃.tɔ.na.sjɔ̃ e.ny.me.ʁa.tiv', 'Dans une énumération, on monte légèrement sur les premiers éléments et on descend sur le dernier', 'Il nous faut du papier, de l\'encre et du toner.', '我们需要纸、墨和碳粉。'],
+        ['demande atténuée', 'də.mɑ̃d a.te.nɥe', 'Une demande polie n\'exige pas une montée forte ; une chute douce réduit la pression, mais varie selon le locuteur', 'Pourriez-vous patienter un instant ?', '您能稍等片刻吗？'],
+        ['montée de confirmation', 'mɔ̃.te də kɔ̃.fiʁ.ma.sjɔ̃', 'La confirmation avec « c\'est ça ? » monte légèrement ; l\'affirmation catégorique descend', 'Demain, ça vous va ?', '明天可以吧？'],
+        ['incise', 'ɛ̃.siz', 'Les incises se lisent plus vite et plus bas pour se détacher du fil principal ; au même volume, elles sonnent comme un point important', 'Le projet, à mon avis, demande encore des tests.', '这个项目，在我看来，还需要测试。'],
+        ['accent sur le sujet', 'ak.sɑ̃ syʁ lə sy.ʒɛ', 'Insister sur le sujet ou le pronom sert à corriger une supposition ; il faut équilibrer la phrase pour ne pas paraître agressif', 'Le coût, c\'est NOUS qui le prenons en charge.', '费用由我们承担（强调我们）'],
+        ['chute finale', 'ʃyt fi.nal', 'Une conclusion avec une chute nette marque la fin ; maintenir la voix haute laisse entendre que l\'on va continuer', 'Alors, c\'est décidé.', '那么，就这么定了。']
+      ]),
+      read: R([['Le rapport, je l\'ai envoyé LUNDI', '报告我是在周一发的'], ['J\'ai dit le BLEU, pas le noir', '我说的是蓝色的，不是黑色'], ['Certes, le coût augmente', '确实成本会上升'], ['Pourriez-vous patienter un instant ?', '您能稍等片刻吗？'], ['Le projet, à mon avis', '这个项目，在我看来'], ['Alors, c\'est décidé', '那么，就这么定了']])
     }
   ]);
 
@@ -339,6 +759,98 @@
         ['6 声', '低平', '低沉而平稳', '事', '事']
       ]),
       read: R([['诗', '诗'], ['时', '时'], ['市', '市场']])
+    },
+    {
+      id: 'yue-s5', level: 'A2', title: '入声与韵尾 -p -t -k', desc: '粤语保留了古汉语的入声，收尾短促一顿，这是普通话没有的音',
+      items: S([
+        ['-p 韵尾', 'p', '双唇闭住收尾，气流不出，短促一顿', '十', '十'],
+        ['-t 韵尾', 't', '舌尖抵住齿背收尾，一触即收', '七', '七'],
+        ['-k 韵尾', 'k', '舌根抬住收尾，最短促', '六', '六'],
+        ['-m 韵尾', 'm', '双唇鼻音收尾，普通话没有这个韵尾', '三', '三'],
+        ['-n 韵尾', 'n', '舌尖鼻音收尾，要和 m 分清', '新', '新'],
+        ['-ng 韵尾', 'ng', '后鼻音收尾，和声母 ng 呼应', '生', '生'],
+        ['阴入', '短而高', '入声也分调：第 1 声的入声高而短', '一', '一'],
+        ['阳入', '短而低', '第 6 声的入声低而短，喉头放松', '食', '吃'],
+        ['入声辨调', 'jat1 / jat6', '同拼写不同调意思不同：“一”是 jat1，“日”是 jat6', '日', '太阳']
+      ]),
+      read: R([['十', '十'], ['七', '七'], ['六', '六'], ['三', '三'], ['新', '新'], ['生', '生'], ['一', '一'], ['食', '吃']])
+    },
+    {
+      id: 'yue-s6', level: 'B1', title: '变调：昵称与习惯变调', desc: '粤语很多词的习惯调跟字典调不一样，变调常表示亲昵或细小',
+      items: S([
+        ['叠字昵称', '高平', '叠字第二个音节常升成高平，读起来亲昵', '妈妈', '妈妈'],
+        ['“仔”尾昵称', 'zai2', '名字后加“仔”“妹”，语调上扬表示亲昵', '明仔', '小明（昵称）'],
+        ['习惯变调：话', 'waa2', '“电话”的“话”由 6 调变 2 调，几乎人人都这么说', '电话', '电话'],
+        ['习惯变调：橙', 'caang2', '“橙”由 4 调变 2 调，单说时习惯变调', '橙', '橙子'],
+        ['习惯变调：红', 'hung2', '“口红”的“红”读成 2 调', '口红', '口红'],
+        ['亲属叠词', 'je1', '爷爷嫲嫲这类叠词，尾音节读高平', '爷爷', '爷爷'],
+        ['习惯变调：市', 'si2', '“街市”的市常读成 2 调', '街市', '菜市场'],
+        ['变调表示细小', 'mui2', '变调常带“小、轻、亲”的味道，妹妹的第二个“妹”由 6 调变 2 调，和原调有别', '妹妹', '妹妹']
+      ]),
+      read: R([['妈妈', '妈妈'], ['明仔', '小明（昵称）'], ['电话', '电话'], ['橙', '橙子'], ['口红', '口红'], ['爷爷', '爷爷'], ['街市', '菜市场'], ['妹妹', '妹妹']])
+    },
+    {
+      id: 'yue-s7', level: 'B2', title: '懒音与语流', desc: '香港街头粤语的懒音自成一套，听得懂才算真融入',
+      items: S([
+        ['n → l', 'n→l', '最常见的懒音，你 nei5 常读成 lei5', '你', '你'],
+        ['ng → 脱落', 'ng→∅', 'ng 声母常丢，我 ngo5 说成 o5', '我', '我'],
+        ['gw → g', 'gw→g', '“广”“国”的圆唇 gw 常简化成 g', '广东', '广东'],
+        ['kw → k', 'kw→k', '同理 kw 常简化，裙 kwan4 说成 kan4', '裙', '裙子'],
+        ['-ng → -n', 'ng→n', '后鼻音韵尾常变前鼻音，讲 gong2 说成 gon2', '讲', '讲'],
+        ['快读缩音', '缩略', '“咁样”“点样”快说只剩“咁”“点”', '咁样', '这样'],
+        ['懒音与场合', '语体', '年轻人懒音多，播音和正式场合仍读全音', '我哋', '我们'],
+        ['外来词粤音化', '音译', '外来词直接按粤语发音读，波 就是 ball', '波', '球'],
+        ['语气词定情绪', '啦 喇 囉', '同一个句子换语气词，情绪完全不同', '喇', '语气词（完成）']
+      ]),
+      read: R([['你', '你'], ['我', '我'], ['广东', '广东'], ['裙', '裙子'], ['讲', '讲'], ['咁样', '这样'], ['我哋', '我们'], ['波', '球']])
+    },
+    {
+      id: 'yue-s8', level: 'C1', title: '高级语域与口音变体', desc: '书面语、新闻播音、演讲都有自己的读法，加上广州腔、香港腔、新派老派的差异',
+      items: S([
+        ['书面语速读', 'formal', '书面语读法接近字典音，不懒音、不缩读，用于演讲和新闻', '香港特別行政區政府', '香港特别行政区政府'],
+        ['新闻播音', 'news', '香港新闻播音用半书面粤语，懒音克制但不是全无，语调偏稳', '新聞報導：今日股價上升', '新闻报道：今日股价上升'],
+        ['演讲节奏', 'speech', '正式演讲比日常慢，每句结尾略微拉长，有停顿和换气', '各位嘉賓，大家好', '各位嘉宾，大家好'],
+        ['语气词克制', 'particle', '正式场合少用「啦」「喇」「囉」，改用「嘅」「呢」或直接收尾', '呢個問題值得我哋深思', '这个问题值得我们深思'],
+        ['广州腔 vs 香港腔', 'variety', '广州腔的鼻音韵尾对立比香港腔少；香港年轻一辈的鼻音韵尾合流较老一辈更明显', '廣州人講粵語好標準', '广州人说粤语很标准'],
+        ['老派 vs 新派', 'generational', '老派分 n/l、ng/零聲母，新派常脫落 ng 聲母，與零聲母合流', '我老豆講嘢好正經', '我爸爸说话很正经'],
+        ['读书音', 'reading', '读书识字的读法接近书面语，不同于日常口语的懒音', '讀書明理', '读书明理'],
+        ['人名地名', 'proper', '人名用粤音读、地名有固定读法（如 尖沙咀 → zim1 saa1 zeoi2）', '尖沙咀係購物天堂', '尖沙咀是购物天堂'],
+        ['数字读法', 'number', '新闻读数字要清晰，万读作 maan6（不是 man6 懒音）', '成交額達一億元', '成交额达一亿元'],
+        ['俗语读法', 'idiom', '俗语有固定读法：「揾食」读 wan2 sik6，意思是谋生', '佢哋係咁上下', '他们差不多这样']
+      ]),
+      read: R([['廣州', '广州'], ['香港', '香港'], ['新聞報導', '新闻报道'], ['尖沙咀', '尖沙咀'], ['萬元', '万元'], ['讀書', '读书']])
+    },
+    {
+      id: 'yue-s9', level: 'C2', title: '重音、停顿与言外之意', desc: '用词不变，重音、句尾和语气词一转，态度就可以完全不同',
+      items: S([
+        ['對比重音：遲啲先', 'ngo5 mou5 waa6 m4 heoi3 ／ ngo5 waa6 ci4 di1 sin1 heoi3', '常把「遲啲先」读得更清楚、稍重，前文的「唔去」相对收住；在该语境中强调并非拒绝，具体重音可随焦点改变', '我冇話唔去，我話遲啲先去。', '我没说不去，我是说晚点再去。'],
+        ['句尾收降：去唔到', 'ngo5 gam1 ci3 zan1 hai6 heoi3 m4 dou3', '明确说明结果时，句尾常可稍降并收短；若还想继续解释，也可停在较轻、未完全收住的调上，因说话者而异', '我今次真係去唔到。', '我这次真的去不了。'],
+        ['停頓與轉折：不過', 'fan6 fong1 on3 ho2 ji5 ／ bat1 gwo3 ／ si4 gaan3 soeng6 jiu3 zoi3 tiu4 zing3', '在「不過」前后可短暂停顿，先肯定再转入限制；停顿通常不宜过长，否则前半句可能听似已经全部说完', '份方案可以，不過，時間上要再調整。', '方案可以，不过时间上要再调整。'],
+        ['語氣詞：啫 ze1', 'ngo5 zi2 hai6 tai2 haa5 ze1 ／ m4 hai6 ji4 gaa1 kyut3 ding6', '「啫」常把动作说成有限或轻微，在该语境中有「只是看看」的缓和意味；句尾可轻收，不必把「啫」读得特别重', '我只係睇吓啫，唔係而家決定。', '我只是看看而已，不是现在决定。'],
+        ['語氣詞：咋 zaa3', 'ngo5 ze3 bun2 syu1 tai2 loeng5 jat6 zaa3 ／ hou2 faai3 waan4 nei5', '「咋」常表示「仅仅、而已」，可配合较短、轻收的句尾，用来减低请求或说明的份量；实际语气仍要看上下文', '我借本書睇兩日咋，好快還你。', '我借这本书只看两天，很快还你。'],
+        ['語氣詞：囉 lo1', 'nei5 m4 soeng2 heoi3 zau6 waa6 m4 soeng2 heoi3 lo1', '「囉」常带理所当然、轻微催促或无奈；在该语境中可显得直接，若不想太冲，可放轻并避免把尾音拖得过长', '你唔想去就話唔想去囉。', '你不想去就说不想去嘛。'],
+        ['書面轉口語', 'coeng4 cing4 ling4 hang4 tung1 zi1 ／ zik1 hai6 ci4 di1 zoi3 waa6 nei5 zi1', '前半是公告常见的书面读法，字音常较完整；转到「即係」后的口语解释时可稍放松、缩短停顿，不必维持同一种播报节奏', '詳情另行通知，即係遲啲再話你知。', '详情另行通知，也就是晚点再告诉你。'],
+        ['反諷語調：多得你', 'do1 dak1 nei5 ／ ngo5 ji4 gaa1 jiu3 jau4 tau4 zou6 gwo3', '「多得你」可在该语境中表示埋怨；常把「多得你」略拖或突出，再收紧后半句，但它也可用于真诚道谢，须结合上下文判断', '多得你，我而家要由頭做過。', '托你的福，我现在得从头重做。（可反讽）'],
+        ['保留語氣：算係咁啦', 'syun3 hai6 gam3 laa1 ／ bat1 gwo3 ngo5 zung6 jau5 siu2 siu2 bou2 lau4', '「算係咁啦」常不是完全赞同，可用较轻、稍收的语调；后面接「不過」时可略停顿，给限定意见留出位置', '算係咁啦，不過我仲有少少保留。', '大致可以吧，不过我还略有保留。'],
+        ['強調：千祈唔好', 'gam1 ci3 zan1 hai6 cin1 kei4 m4 hou2 ci4 dou3', '郑重提醒时常可稍重读「千祈唔好」，「真係」也可略突出；拖长某个音节可加强情绪，但效果因说话者而异，过长可能不自然', '今次真係千祈唔好遲到。', '这次真的千万别迟到。']
+      ]),
+      read: R([['我冇話唔去，我話遲啲先去', '我没说不去，我是说晚点再去'], ['份方案可以，不過，時間上要再調整', '方案可以，不过时间上要再调整'], ['我只係睇吓啫', '我只是看看而已'], ['詳情另行通知，即係遲啲再話你知', '详情另行通知，也就是晚点再告诉你'], ['多得你，我而家要由頭做過', '托你的福，我现在得从头重做（可反讽）'], ['今次真係千祈唔好遲到', '这次真的千万别迟到']])
+    },
+    {
+      id: 'yue-s10', level: 'C2', title: '資訊焦點、停頓同語氣', desc: '同一句說話，焦點擺邊、停幾耐，意思可以差好遠',
+      items: S([
+        ['資訊焦點', 'fan6 bou3 gou2 ngo5 sing1 kei4 jat1 ji5 ging1 gaau1 zo2', '句子的主要重音通常落喺新資訊上，會隨住對方問乜而移位；唔係每次都要重讀句尾', '份報告我星期一已經交咗。', '那份报告我周一已经交了（焦点是周一）'],
+        ['對比重音', 'ngo5 gong2 laam4 sik1 go2 go3 ／ m4 hai6 hak1 sik1 go2 go3', '要分開兩個選項時，重讀被對比嗰個，其餘放輕；重音位置一變，含意都會變', '我講藍色嗰個，唔係黑色嗰個。', '我说的是蓝色那个，不是黑色那个'],
+        ['讓步停頓', 'sing4 bun2 zan1 hai6 wui5 sing1 ／ bat1 gwo3 ／ ban2 zat1 bou2 dak1 zyu6', '「不過」前後可以短暫停一停，先承認再轉入限制；停得太久，前半句會好似已經講完', '成本真係會升，不過，品質保得住。', '成本确实会升，不过质量保得住'],
+        ['引用界線', 'keoi5 waa6 「haau6 gwo2 jau5 haan6」', '引用前後可以稍為放低聲線、同自己嘅評論分開；唔好一路用同一力度讀到底', '佢話「效果有限」。', '他说“效果有限”'],
+        ['列舉語調', 'jiu3 zi2 ／ jiu3 mak6 ／ zung6 jiu3 taan3 fan2', '列舉時前面幾項輕輕升高，最後一項降返落嚟，聽落就知仲有冇下一項', '要紙、要墨，仲要碳粉。', '要纸、要墨，还要碳粉'],
+        ['禮貌請求', 'm4 hou2 ji3 si1 ／ ho2 m4 ho2 ji5 dang2 jat1 zan6', '禮貌請求唔一定要大幅升調；句尾輕輕收住可以減少壓迫感，但實際語氣因說話者而異', '唔好意思，可唔可以等一陣？', '不好意思，可以等一会儿吗？'],
+        ['確認上升', 'ting1 jat6 dak1 laa1 ／ hai6 mai6', '確認用「係咪」可以輕輕上揚；好肯定嘅陳述就降返落嚟。同一句說話，升降唔同，作用都唔同', '聽日得啦，係咪？', '明天可以吧？'],
+        ['插入語', 'ni1 go3 fong1 on3 ／ ngo5 jing6 wai4 ／ zung6 jiu3 jim6 zing3', '插入語讀得快啲、低啲，同主句分開層次；讀到同樣重，會好似補充咗好重要嘅嘢', '呢個方案，我認為，仲要驗證。', '这个方案，我认为，还要验证'],
+        ['對比「係」', 'cin4 hai6 ngo5 dei6 ceot1', '重讀「係」或者主語，可以更正對方嘅理解；但重音放得太密，會顯得有攻擊性', '錢係我哋出。', '钱是我们出（强调我们）'],
+        ['收尾下降', 'gam2 zau6 gam3 kyut3 ding6', '結論句明顯降調，表示講完；如果句尾仍然高企，聽落好似仲有下文', '噉就咁決定。', '那就这么决定']
+      ]),
+      read: R([['份報告我星期一已經交咗', '那份报告我周一已经交了'], ['我講藍色嗰個，唔係黑色嗰個', '我说的是蓝色那个'], ['成本真係會升，不過', '成本确实会升，不过'], ['唔好意思，可唔可以等一陣', '不好意思，可以等一会儿吗？'], ['呢個方案，我認為', '这个方案，我认为'], ['咁就咁決定', '那就这么决定']])
     }
   ]);
 })();

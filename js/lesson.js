@@ -98,6 +98,23 @@
       level = stage.level || 'A1';
       lesson = { id: '__sound_' + stage.id, title: stage.title, items: [] };
       exercises = LP.ex.buildSound(course, stage);
+    } else if (mode === 'drill') {
+      (course.drills || []).forEach(function (st) { if (st.id === opts.drillId) stage = st; });
+      if (!stage) { LP.toast('找不到这组听力训练'); return; }
+      level = stage.level || 'C2';
+      if (!LP.store.levelOpen(langId, level)) {
+        LP.toast('先把这一级解锁，再来做顶阶听力训练');
+        return;
+      }
+      lesson = { id: '__drill_' + stage.id, title: stage.title, items: [] };
+      exercises = LP.ex.buildDrill(course, stage);
+    } else if (mode === 'pattern') {
+      var pats = (opts.patterns || []).filter(function (p) { return p && p.e && p.frame; }).map(function (p) {
+        return { w: p.frame, t: p.t || '', e: p.e, et: p.et || '', p: p.p || '' };
+      });
+      if (!pats.length) { LP.toast('这篇精读暂时没有句型卡'); return; }
+      lesson = { id: '__pattern_' + (opts.readingId || 'x'), title: '句型拆解', items: [] };
+      exercises = LP.ex.buildPattern(course, pats);
     } else {
       flat.forEach(function (row, i) {
         if (row.lesson.id === lessonId) { lesson = row.lesson; flatIdx = i; }
@@ -132,6 +149,8 @@
     if (mode === 'exam') shell(lesson.title, '听读说混合 · 80 分及格');
     else if (mode === 'speak') shell('口语跟读', '开口 8 句 · 录音回放自评');
     else if (mode === 'sound') shell(lesson.title, level + ' 发音课 · 学完能自己拼读');
+    else if (mode === 'drill') shell(lesson.title, '整句精听 · 听懂态度再抓细节');
+    else if (mode === 'pattern') shell(lesson.title, '拆骨架 · 再把句子装回去');
     else shell(lesson.title, mode === 'review' ? '复习到期词' : '学新课');
     renderQuestion();
   }
@@ -321,7 +340,7 @@
 
     function play() {
       if (!cur) return;
-      LP.ex.speak(ex.item.w, cur.course.tts, LP.store.getState().profile.rate);
+      LP.ex.speak(ex.audio || ex.item.w, cur.course.tts, LP.store.getState().profile.rate);
     }
     body.querySelector('#play').addEventListener('click', play);
     setTimeout(play, 320);
@@ -931,6 +950,7 @@
       ? Math.round(cur.speakScores.reduce(function (a, b) { return a + b; }, 0) / cur.speakScores.length)
       : 0;
     var langId = cur.langId;
+    var dlgKeys = (d.keys || []).slice(0, 4);
 
     LP.store.markDialogueDone(langId, d.id, acc);
     LP.store.addXp(xp);
@@ -950,12 +970,183 @@
           '<div class="rw"><span>跟读匹配/自评平均</span><em>' + (avg ? avg + ' 分' : '未启用录音') + '</em></div>' +
           '<div class="rw"><span>这一段情景</span><em>' + esc(d.title) + '</em></div>' +
         '</div>' +
+        (dlgKeys.length ? '<div class="card res-words"><div class="card-title">实战表达</div>' +
+          dlgKeys.map(function (k) {
+            return '<div class="rd-key"><div class="rd-key-top"><b>' + esc(k.w) + '</b><span>' + esc(k.t) + '</span></div>' +
+              '<div class="rd-key-e">' + esc(k.e) + '<i>' + esc(k.et || '') + '</i></div></div>';
+          }).join('') + '</div>' : '') +
+        (dlgKeys.length ? '<button class="ghost" id="resKeys">把 ' + dlgKeys.length + ' 个表达加入复习</button>' : '') +
         '<button class="btn primary" id="resBack">返回路径</button>' +
         '<button class="ghost" id="resAgain">再说一次</button>' +
       '</div>';
 
     LP.root.querySelector('#resBack').addEventListener('click', function () { LP.go('#/' + langId); });
     LP.root.querySelector('#resAgain').addEventListener('click', function () { LP.startDialogue(langId, d.id); });
+    if (dlgKeys.length) {
+      LP.root.querySelector('#resKeys').addEventListener('click', function (e) {
+        var b = e.currentTarget;
+        dlgKeys.forEach(function (k) { LP.store.recordAnswer(langId, k, true); });
+        b.disabled = true;
+        b.textContent = '已加入复习计划 ✓';
+        LP.toast('已加入复习，明天会出现在复习卡片里');
+      });
+    }
+  }
+
+  /* ---------------- 精读 ---------------- */
+  function startReading(langId, readingId) {
+    var course = LP.store.getCourse(langId);
+    if (!course) return;
+    var rd = null;
+    (course.readings || []).forEach(function (r) { if (r.id === readingId) rd = r; });
+    if (!rd) { LP.toast('找不到这篇精读'); return; }
+
+    cur = { langId: langId, course: course, reading: rd, mode: 'reading', start: Date.now() };
+    LP.setLessonMode(true);
+
+    var paras = String(rd.text || '').split('\n\n').filter(Boolean);
+    var trs = String(rd.tr || '').split('\n\n').filter(Boolean);
+    var article = paras.map(function (p, i) {
+      return '<p class="rd-p">' + esc(p) + '</p>' +
+        (trs[i] ? '<p class="rd-tr">' + esc(trs[i]) + '</p>' : '');
+    }).join('');
+    var qlist = rd.qs || [];
+    var qHtml = qlist.map(function (q, qi) {
+      return '<div class="rd-q" data-qbox="' + qi + '">' +
+        '<div class="rd-qtitle"><b>' + (qi + 1) + '</b>' + esc(q.q) + '</div>' +
+        '<div class="rd-opts">' + q.opts.map(function (o, oi) {
+          return '<button class="rd-opt" data-qi="' + qi + '" data-oi="' + oi + '">' +
+            '<span class="rd-mark"></span><span>' + esc(o.t) + '</span></button>';
+        }).join('') + '</div>' +
+        '<div class="rd-qfb"></div></div>';
+    }).join('');
+
+    var keyList = rd.keys || [];
+    var keysHtml = keyList.length
+      ? '<div class="rd-keys"><div class="rd-keys-h">重点表达 <span>读完可以先过一遍，再决定要不要加入复习</span></div>' +
+        keyList.map(function (k) {
+          return '<div class="rd-key"><div class="rd-key-top"><b>' + esc(k.w) + '</b><span>' + esc(k.t) + '</span></div>' +
+            '<div class="rd-key-e">' + esc(k.e) + '<i>' + esc(k.et || '') + '</i></div></div>';
+        }).join('') + '</div>'
+      : '';
+
+    var patList = rd.patterns || [];
+    var patsHtml = patList.length
+      ? '<div class="rd-keys"><div class="rd-keys-h">句型拆解 <span>长句先拆骨架，再装回去</span></div>' +
+        patList.map(function (p) {
+          return '<div class="rd-pat"><div class="rd-pat-frame">' + esc(p.frame) + '</div>' +
+            '<div class="rd-pat-t">' + esc(p.t || '') + '</div>' +
+            '<div class="rd-key-e">' + esc(p.e) + '<i>' + esc(p.et || '') + '</i></div>' +
+            (p.tip ? '<div class="rd-pat-tip">' + esc(p.tip) + '</div>' : '') + '</div>';
+        }).join('') + '</div>'
+      : '';
+
+    LP.root.innerHTML =
+      '<div class="lesson">' +
+        '<div class="lesson-head">' +
+          '<button class="icon-btn" id="quit">✕</button>' +
+          '<div class="track"><i id="fill" style="width:0%"></i></div>' +
+          '<div class="qcount" id="qcount">0/' + qlist.length + '</div>' +
+        '</div>' +
+        '<div class="lesson-titlebar">' + esc(rd.title) +
+          '<span>' + esc((rd.level || '') + ' · ' + (rd.src || '精读')) + '</span></div>' +
+        '<div class="lesson-body rd-body">' +
+          '<article class="rd-article hide-tr">' + article + '</article>' +
+          '<div class="rd-tools"><button class="ghost sm" id="rdTr">显示译文</button></div>' +
+          '<div class="rd-qs">' + qHtml + '</div>' +
+          keysHtml + patsHtml +
+        '</div>' +
+      '</div>' +
+      '<div class="foot" id="foot"></div>';
+
+    LP.root.querySelector('#quit').addEventListener('click', function () {
+      if (confirm('退出这篇精读？本次作答不会保存。')) {
+        var id = cur ? cur.langId : 'en';
+        cur = null;
+        LP.go('#/' + id);
+      }
+    });
+
+    var art = LP.root.querySelector('.rd-article');
+    var trBtn = LP.root.querySelector('#rdTr');
+    trBtn.addEventListener('click', function () {
+      var hidden = art.classList.toggle('hide-tr');
+      trBtn.textContent = hidden ? '显示译文' : '隐藏译文';
+    });
+
+    var picked = {};
+    var foot = LP.root.querySelector('#foot');
+    foot.className = 'foot';
+    foot.innerHTML = '<button class="btn" id="rdSubmit" disabled></button>';
+    var submit = foot.querySelector('#rdSubmit');
+
+    function refresh() {
+      var n = Object.keys(picked).length;
+      LP.root.querySelector('#qcount').textContent = n + '/' + qlist.length;
+      LP.root.querySelector('#fill').style.width = Math.round(n / qlist.length * 100) + '%';
+      submit.disabled = n < qlist.length;
+      submit.textContent = n < qlist.length ? '还剩 ' + (qlist.length - n) + ' 个问题' : '提交答案';
+    }
+    refresh();
+
+    LP.root.querySelectorAll('.rd-opt').forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (b.disabled) return;
+        var qi = Number(b.getAttribute('data-qi'));
+        picked[qi] = Number(b.getAttribute('data-oi'));
+        LP.root.querySelectorAll('[data-qi="' + qi + '"]').forEach(function (x) { x.classList.remove('sel'); });
+        b.classList.add('sel');
+        refresh();
+      });
+    });
+
+    submit.addEventListener('click', function () {
+      var correct = 0;
+      qlist.forEach(function (q, qi) {
+        var right = 0;
+        q.opts.forEach(function (o, oi) { if (o.best) right = oi; });
+        var ok = picked[qi] === right;
+        if (ok) correct++;
+        var box = LP.root.querySelector('[data-qbox="' + qi + '"]');
+        box.querySelectorAll('.rd-opt').forEach(function (b) {
+          b.disabled = true;
+          var oi = Number(b.getAttribute('data-oi'));
+          if (oi === right) b.classList.add('ok');
+          else if (oi === picked[qi]) b.classList.add('bad');
+        });
+        var fb = box.querySelector('.rd-qfb');
+        fb.textContent = ok ? '✓ 理解正确' : '✗ 正确答案已标出，回原文核对一下';
+        fb.className = 'rd-qfb ' + (ok ? 'ok' : 'bad');
+      });
+      LP.root.querySelector('#fill').style.width = '100%';
+      foot.className = 'foot';
+      foot.innerHTML =
+        '<div class="fb"><div class="fb-title">' +
+          (correct === qlist.length ? '✅ 全对，读得很细' : '📖 答对 ' + correct + ' / ' + qlist.length) +
+        '</div><div class="fb-sub">可以点「显示译文」逐段核对，再读一遍原文</div></div>' +
+        (keyList.length ? '<button class="ghost sm" id="rdKeys">把 ' + keyList.length + ' 个表达加入复习</button>' : '') +
+        (patList.length ? '<button class="ghost sm" id="rdPats">练这 ' + patList.length + ' 个句型</button>' : '') +
+        '<button class="btn primary" id="rdBack">返回路径</button>';
+      if (keyList.length) {
+        LP.root.querySelector('#rdKeys').addEventListener('click', function (e) {
+          var b = e.currentTarget;
+          keyList.forEach(function (k) { LP.store.recordAnswer(langId, k, true); });
+          b.disabled = true;
+          b.textContent = '已加入复习计划 ✓';
+          LP.toast('已加入复习，明天会出现在复习卡片里');
+        });
+      }
+      if (patList.length) {
+        LP.root.querySelector('#rdPats').addEventListener('click', function () {
+          LP.startLesson(langId, null, 'pattern', { patterns: patList, readingId: rd.id });
+        });
+      }
+      LP.root.querySelector('#rdBack').addEventListener('click', function () {
+        var id = cur ? cur.langId : 'en';
+        cur = null;
+        LP.go('#/' + id);
+      });
+    });
   }
 
   /* ---------------- 结算 ---------------- */
@@ -974,6 +1165,7 @@
     if (mode === 'review') xp = 5;
     else if (mode === 'speak') xp = 8;
     else if (mode === 'sound') xp = 10;
+    else if (mode === 'drill' || mode === 'pattern') xp = 12;
     else if (mode === 'exam') xp = 30;
     if (acc === 100) xp += 5;
 
@@ -1071,7 +1263,8 @@
     LP.root.innerHTML =
       '<div class="result">' +
         '<div class="res-emoji">' + (acc >= 100 ? '🏆' : '🎉') + '</div>' +
-        '<h1>' + (mode === 'review' ? '复习完成！' : mode === 'speak' ? '口语练习完成！' : '关卡完成！') + '</h1>' +
+        '<h1>' + (mode === 'review' ? '复习完成！' : mode === 'speak' ? '口语练习完成！' :
+          mode === 'drill' ? '听力训练完成！' : mode === 'pattern' ? '句型练习完成！' : '关卡完成！') + '</h1>' +
         '<div class="res-sub">' + esc(title) + ' · ' + (acc >= 100 ? '全对，太强了' : '继续保持') + '</div>' +
         '<div class="res-stats">' +
           '<div><b>+' + xp + '</b><span>XP</span></div>' +
@@ -1095,4 +1288,6 @@
   LP.startDialogue = startDialogue;
   LP.startExam = function (langId, level) { start(langId, null, 'exam', { level: level }); };
   LP.startSound = function (langId, stageId) { start(langId, null, 'sound', { stageId: stageId }); };
+  LP.startDrill = function (langId, drillId) { start(langId, null, 'drill', { drillId: drillId }); };
+  LP.startReading = startReading;
 })();

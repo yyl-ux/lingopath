@@ -1,5 +1,5 @@
 /* 离线缓存：断网也能继续学 */
-var CACHE = 'lingopath-v7';
+var CACHE = 'lingopath-v13';
 var ASSETS = [
   './',
   './index.html',

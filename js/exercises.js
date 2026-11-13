@@ -95,8 +95,25 @@
       item: item,
       options: opts,
       answer: item.w,
+      audio: item.w,
       lang: langCode,
       prompt: '听发音，选出你听到的词'
+    };
+  }
+
+  /* 听整句选意思：练的是“听懂一段话”，不是听写单词 */
+  function makeListenSentence(item, all, langCode) {
+    var correct = item.et || item.t;
+    var opts = [correct].concat(pickTexts(item, all, 'et', 3).filter(function (o) { return o; }));
+    LP.util.shuffle(opts);
+    return {
+      type: 'listen',
+      item: item,
+      options: opts,
+      answer: correct,
+      audio: item.e || item.w,
+      lang: langCode,
+      prompt: '听句子，选出最接近的意思'
     };
   }
 
@@ -248,6 +265,28 @@
     return ex;
   }
 
+  /* 顶阶听力：整句精听，答完再跟读一遍 */
+  function buildDrill(course, stage) {
+    var all = allItems(course);
+    var items = (stage && stage.items) || [];
+    var ex = [];
+    items.forEach(function (it) { ex.push(makeListenSentence(it, all, course.tts)); });
+    if (items.length) ex.push(makeSpeak(items[0]));
+    return ex;
+  }
+
+  /* 句型卡：能排语序的排语序，排不了（中日韩粤）就听整句选意思 */
+  function buildPattern(course, items) {
+    var all = allItems(course);
+    var ex = [];
+    items.forEach(function (it) {
+      if (course.order !== false && hasSentence(it)) ex.push(makeOrder(it));
+      else ex.push(makeListenSentence(it, all, course.tts));
+    });
+    if (items.length) ex.push(makeSpeak(items[0]));
+    return ex;
+  }
+
   /* 发音课：卡片认音 → 听例词辨音 → 拼读没学过的新词 */
   function soundLabel(it) {
     return it.ipa ? it.k + ' ' + it.ipa : it.k;
@@ -311,6 +350,8 @@
     buildSpeaking: buildSpeaking,
     buildExam: buildExam,
     buildSound: buildSound,
+    buildDrill: buildDrill,
+    buildPattern: buildPattern,
     itemsOfLevel: itemsOfLevel,
     countLevel: countLevel,
     makeSpeak: makeSpeak,

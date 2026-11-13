@@ -52,7 +52,7 @@
         '<div class="lc-meta"><span>' + s.done + '/' + s.total + '</span>' +
         (s.due > 0 ? '<span class="due">待复习 ' + s.due + '</span>' : '<span>' + p + '%</span>') +
         '</div>' +
-        (certs ? '<div class="lc-cert">🎖 已认证 ' + certs + '</div>' : '') +
+        (certs ? '<div class="lc-cert">已认证 ' + certs + '</div>' : '') +
         '</button>';
     }).join('');
 
@@ -76,7 +76,7 @@
         '<div class="goal-top"><div>' +
           '<div class="goal-label">今日目标</div>' +
           '<div class="goal-num">' + txp + ' / ' + goal + ' XP</div>' +
-        '</div><div class="goal-emoji">' + (txp >= goal ? '🎉' : '🎯') + '</div></div>' +
+        '</div></div>' +
         bar(LP.util.pct(txp, goal)) +
         '<div class="goal-tip">' + (txp >= goal
           ? '今天达标了，多学也不算白学。'
@@ -102,7 +102,7 @@
       var rec = LP.store.getSound(langId, st.id);
       var passed = rec && rec.passed;
       return '<button class="snd-card" data-sound="' + st.id + '" data-open="' + (open ? 1 : 0) + '">' +
-        '<div class="snd-tag">🎧 ' + LP.util.esc(st.level || lv) + '</div>' +
+        '<div class="snd-tag">' + LP.util.esc(st.level || lv) + '</div>' +
         '<div class="snd-name">' + LP.util.esc(st.title) + '</div>' +
         '<div class="snd-sub">' + (st.items || []).length + ' 个音 · ' + (st.read || []).length + ' 个拼读词</div>' +
         '<div class="snd-st' + (passed ? ' ok' : '') + '">' +
@@ -110,6 +110,34 @@
         '</div></button>';
     }).join('');
     return '<div class="snd-sec"><div class="snd-sec-head">发音课 <span>学会音标，生词自己就能读</span></div>' +
+      '<div class="snd-grid">' + cards + '</div></div>';
+  }
+
+  function readingSection(langId, lv, open, course) {
+    var list = (course.readings || []).filter(function (r) { return (r.level || 'C1') === lv; });
+    if (!list.length) return '';
+    var cards = list.map(function (r) {
+      return '<button class="snd-card" data-reading="' + r.id + '">' +
+        '<div class="snd-tag">' + LP.util.esc(r.level || lv) + '</div>' +
+        '<div class="snd-name">' + LP.util.esc(r.title) + '</div>' +
+        '<div class="snd-sub">' + LP.util.esc(r.src || '') + ' · ' + (r.qs || []).length + ' 道理解题</div>' +
+        '<div class="snd-st">开始精读</div></button>';
+    }).join('');
+    return '<div class="snd-sec"><div class="snd-sec-head">精读 <span>读完整原文，再回答理解题</span></div>' +
+      '<div class="snd-grid">' + cards + '</div></div>';
+  }
+
+  function drillSection(langId, lv, open, course) {
+    var list = (course.drills || []).filter(function (d) { return (d.level || 'C2') === lv; });
+    if (!list.length) return '';
+    var cards = list.map(function (d) {
+      return '<button class="snd-card" data-drill="' + d.id + '" data-open="' + (open ? 1 : 0) + '">' +
+        '<div class="snd-tag">' + LP.util.esc(d.level || lv) + '</div>' +
+        '<div class="snd-name">' + LP.util.esc(d.title) + '</div>' +
+        '<div class="snd-sub">' + ((d.items || []).length) + ' 句精听 · 整句听完再选意思</div>' +
+        '<div class="snd-st">' + (open ? '开始训练' : '未解锁') + '</div></button>';
+    }).join('');
+    return '<div class="snd-sec"><div class="snd-sec-head">顶阶听力 <span>真实语速的整句，不是单词听写</span></div>' +
       '<div class="snd-grid">' + cards + '</div></div>';
   }
 
@@ -131,7 +159,7 @@
         '<div class="exam-map">' + LP.util.esc(map || '该等级题库扩充中') + '</div></div>' +
         '<div class="exam-score ' + (rec && rec.passed ? 'ok' : '') + '">' +
           (rec ? (rec.passed ? '✓ ' + rec.score + ' 分' : '最高 ' + (rec.score || 0) + ' 分')
-            : (canRun ? '待考' : open ? '未达标' : '🔒')) +
+            : (canRun ? '待考' : open ? '未达标' : '未解锁')) +
         '</div>' +
       '</div>' +
       '<div class="exam-meta">' + words + ' 个词条 · ' + dlgCount + ' 个情景 · 听读说混合，80 分及格</div>' +
@@ -209,7 +237,7 @@
           var done = !!(rec && rec.done);
           var unlocked = open && LP.store.isUnlocked(flat, idx, langId);
           var cls = done ? 'done' : (unlocked ? 'next' : 'locked');
-          var off = [0, 58, 0, -58][idx % 4];
+          var off = [0, 46, 0, -46][idx % 4];
           var ico = done ? '✓' : (unlocked ? '▶' : '🔒');
           return '<div class="prow" style="transform:translateX(' + off + 'px)">' +
             '<button class="node ' + cls + '" data-lesson="' + l.id + '" data-unlocked="' + (unlocked ? 1 : 0) + '">' +
@@ -265,12 +293,14 @@
           '<div class="lvl-txt"><b>' + (info ? info.name : lv) + '</b>' +
           '<span>' + (info ? info.desc : '') + '</span></div></div>' +
         soundSection(langId, lv, open, course) +
+        readingSection(langId, lv, open, course) +
+        drillSection(langId, lv, open, course) +
         units + lvDlgBlock + examCard(langId, lv, open, course) +
         '</div>';
     }).join('');
 
     var speakCard = '<button class="review-card speak-card" data-speak>' +
-      '<div class="rc-left"><div class="rc-title">🎤 口语跟读练习</div>' +
+      '<div class="rc-left"><div class="rc-title">口语跟读练习</div>' +
       '<div class="rc-sub">用你学过的句子开口：听标准音 → 录音 → 回放自评</div></div>' +
       '<div class="rc-badge speak">8 句</div></button>';
 
@@ -285,7 +315,6 @@
         if (!(r && r.done)) { nextLesson = l; nextUnit = u; }
       });
     });
-    var npc = LP.game.npc(langId);
     var hero = nextLesson
       ? '<div class="hero" style="--hcc:' + (nextUnit.color || '#58cc02') + '">' +
           '<div class="hero-top"><span class="hero-k">继续学习</span>' +
@@ -293,13 +322,11 @@
           '<div class="hero-t">' + LP.util.esc(nextLesson.title) + '</div>' +
           '<div class="hero-s">' + LP.util.esc(nextUnit.title) + ' · ' +
             (nextLesson.items || []).length + ' 个词</div>' +
-          '<div class="hero-npc"><span class="hero-ava">' + npc.emoji + '</span>' +
-            '<span class="hero-say">' + LP.util.esc(npc.hello) + '</span></div>' +
           '<button class="hero-btn" data-hero="' + nextLesson.id + '">开始这一关</button>' +
         '</div>'
       : '<div class="hero cleared" style="--hcc:#58cc02">' +
           '<div class="hero-top"><span class="hero-k">全部完成</span></div>' +
-          '<div class="hero-t">🎉 这一门课你已经走完了</div>' +
+          '<div class="hero-t">这一门课你已经走完了</div>' +
           '<div class="hero-s">去练口语和情景，或者换一门语言</div></div>';
 
     root.innerHTML =
@@ -346,6 +373,17 @@
       b.addEventListener('click', function () {
         if (b.getAttribute('data-open') !== '1') { LP.toast('先完成上一级的内容再解锁这一节发音课'); return; }
         LP.startSound(langId, b.getAttribute('data-sound'));
+      });
+    });
+    root.querySelectorAll('[data-reading]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        LP.startReading(langId, b.getAttribute('data-reading'));
+      });
+    });
+    root.querySelectorAll('[data-drill]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (b.getAttribute('data-open') !== '1') { LP.toast('先把这一级解锁，再来做顶阶听力训练'); return; }
+        LP.startDrill(langId, b.getAttribute('data-drill'));
       });
     });
     root.querySelectorAll('[data-lesson]').forEach(function (b) {
